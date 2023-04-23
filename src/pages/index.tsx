@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <div className={styles.artistInfo}>
             <h2>MINISTER ANDREW</h2>
-            <p>Andrew is called to bring God's divine presence to worshipers and to those who
+            <p>Andrew is called to bring God&apos;s divine presence to worshipers and to those who
               would dare to praise Him in every nation of the world and to use music to build
               an unforgettable intimate fellowship between believers and God as well ministration to the unsaved. </p>
             <div className={styles.cta}>
@@ -183,7 +183,7 @@ export default function Home() {
             </div>
             <div className={styles.content__textInfo}>
               <div className={styles.text}>
-                <p>Andrew is called to bring God's divine presence to worshipers and
+                <p>Andrew is called to bring God&apos;s divine presence to worshipers and
                   to those who would dare to praise Him in every nation of the world
                   and to use music to build an unforgettable intimate fellowship
                   between believers and God as well ministration to the unsaved. </p>
