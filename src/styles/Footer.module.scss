@@ -1,0 +1,53 @@
+@import "./variables.scss";
+@import "./mediaQuery";
+@import "./reuseables";
+
+.footerContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 1300px;
+    padding: $section-padding-desktop;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 1.5px solid $primary-color;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    // background-color: $grey-bg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $grey-bg;
+    z-index: 3;
+
+    .lhs {
+        display: flex;
+        align-items: center;
+        gap: 24px;  
+    }
+
+    .logo {
+        width: 65px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        // border: 1px solid;
+        border-right: 1.5px solid $primary-color;
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    p {
+        font-size: $font-size-16 - 4px;
+    }
+    .policy {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    } 
+}
