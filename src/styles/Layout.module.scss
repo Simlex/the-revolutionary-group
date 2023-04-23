@@ -18,5 +18,12 @@
         margin: 0;
         border: 0;
         padding-bottom: 0px;
+		animation: slideIn 500ms 100ms ease;
+
+		@keyframes slideIn {
+			from {
+				transform: translateX(100vw);
+			}
+		}
     }
 }
