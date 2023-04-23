@@ -1,0 +1,22 @@
+@import "./variables.scss";
+@import "./mediaQuery";
+@import "./reuseables";
+
+.innerPage {
+	border: 1.5px solid $primary-color;
+	border-right: none;
+	border-bottom: none;
+	margin-left: 64px;
+	max-height: calc(100vh - 81px);
+	height: calc(100vh - 81px);
+	padding-bottom: 58px;
+	overflow-y: auto;
+	background-color: $grey-bg;
+    @include scrollArea;
+
+    @include tablet {
+        margin: 0;
+        border: 0;
+        padding-bottom: 0px;
+    }
+}
