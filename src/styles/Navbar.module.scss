@@ -1,3 +1,183 @@
 @import "./variables.scss";
 @import "./mediaQuery";
 @import "./reuseables";
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .navLinks {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        li {
+            list-style-type: none;
+            font-size: $font-size-16 - 2px;
+            // border: 1px solid;
+            position: relative;
+            &::after {
+                position: absolute;
+                background-color: $primary-color;
+                content: '';
+                width: 100%;
+                height: 0%;
+                bottom: 0;
+                left: 0;
+                opacity: 0.5;
+                transition: all 300ms ease !important;
+            }
+            &:hover {
+                cursor: pointer;
+                font-weight: 500;
+                color: $primary-color;
+                &::after {
+                    height: 35%;
+                } 
+            }
+        }
+        .active {
+            color: $primary-color;
+        }
+    }
+
+    .cta {
+        button {
+            @include small-button;
+        }
+    }
+}
+
+.navbarContainer {
+    padding-top: 16px;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__logo {
+        width: 48px;
+        height: 48px;
+        z-index: 2;
+    }
+
+    &__navLinksSection {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        z-index: 2;
+        .navLinks {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            li {
+                list-style: none;
+                cursor: pointer;
+                color: $white;
+                font-size: 14px;
+                transition: all 300ms ease;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+        button {
+            @include medium-button;
+        }
+    }
+
+    &__menuIcon {
+        // background-color: #fff;
+        z-index: 2;
+        svg {
+            display: block;
+            height: 30px;
+            width: 30px;
+            stroke: $black;
+            path {
+                fill: $black;
+            }
+        }
+    }
+
+    .mobileNavContainer {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        // background-color: #fff;
+        background: rgba(59, 57, 57, 0.7);
+        backdrop-filter: blur(45px);
+        // display: block;
+        z-index: 10;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        -webkit-animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: slide-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        @-webkit-keyframes slide-bottom {
+            from {
+                opacity: 0;
+                right: -100%;
+            }
+        }
+        @keyframes slide-bottom {
+            from {
+                opacity: 0;
+                right: -100%;
+            }
+        }
+
+        &__topArea {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            .logo {
+                width: 48px;
+                height: 48px;
+            }
+            .closeIcon {
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        &__navigationLinks {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+            height: 80%;
+            .navLinks {
+                li {
+                    list-style: none;
+                    color: $white;
+                    text-align: center;
+                    // border: 1px solid;
+                    padding: 12px;
+                    margin-bottom: 32px;
+                    font-size: 20px;
+                }
+            }
+            .cta {
+                button {
+                    @include big-button;
+                }
+            }
+        }
+    }
+}
