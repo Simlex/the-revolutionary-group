@@ -3,9 +3,10 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import images from '../../public/images'
-import { FacebookIcon, InstagramIcon, MailIcon, ScrollDownArrowIcon, TwitterIcon, YoutubeIcon } from '../../components/SVGs/SVGicons'
+import { FacebookIcon, InstagramIcon, MailIcon, PauseIcon, PlayIcon, ScrollDownArrowIcon, TwitterIcon, YoutubeIcon } from '../../components/SVGs/SVGicons'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
+import { musics } from '../../constants/musics'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -54,6 +55,8 @@ export default function Home() {
   });
 
   const { days, hours, minutes, seconds } = timeLeft;
+
+  const [isPlaying, setIsPlaying] = useState(false);
 
 
   return (
@@ -150,19 +153,19 @@ export default function Home() {
             </div>
             <div className={styles.recentMusicContainer__musics}>
               {
-                ([...Array(3)]).map((eachMusic, index) => (
+                musics.map((eachMusic, index) => (
                   <div className={styles.eachMusicCard} key={index}>
                     <div className={styles.image}>
                       <Image src={images.He_Has_Done_It_All_Cover} alt='music cover' />
                     </div>
                     <div className={styles.musicInfo}>
                       <div className={styles.musicInfo__top}>
-                        <h2>Great God</h2>
-                        <p>This is a song about the goodness of God. It says a lot about how God has helped his people...</p>
+                        <h2>{eachMusic.name}</h2>
+                        <p>{eachMusic.shortDescription}</p>
                       </div>
                       <div className={styles.cta}>
                         <button>Read more</button>
-                        <button>Listen</button>
+                        <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button>
                       </div>
                     </div>
                   </div>

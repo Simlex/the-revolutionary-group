@@ -45,22 +45,22 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                 </div>
                                 <div className={styles.mobileNavContainer__navigationLinks}>
                                     <div className={styles.navLinks}>
-                                        <Link href='/'>
+                                        <Link href='/' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/' ? styles.active : ''}>Home</li>
                                         </Link>
-                                        <Link href='/music'>
+                                        <Link href='/music' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/music' ? styles.active : ''}>My Musics</li>
                                         </Link>
-                                        <Link href='/events'>
+                                        <Link href='/events' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/events' ? styles.active : ''}>Events</li>
                                         </Link>
-                                        <Link href='/blog'>
+                                        <Link href='/blog' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/blog' ? styles.active : ''}>Blog</li>
                                         </Link>
-                                        <Link href='/about'>
+                                        <Link href='/about' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/about' ? styles.active : ''}>About me</li>
                                         </Link>
-                                        <Link href='/contact'>
+                                        <Link href='/contact' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/contact' ? styles.active : ''}>Contact me</li>
                                         </Link>
                                     </div>

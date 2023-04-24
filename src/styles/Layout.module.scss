@@ -26,4 +26,11 @@
 		// 	}
 		// }
     }
+	animation: fadeIn 400ms ease;
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+	}
 }
