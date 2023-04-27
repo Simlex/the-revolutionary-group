@@ -7,6 +7,7 @@ import { FacebookIcon, InstagramIcon, MailIcon, PauseIcon, PlayIcon, ScrollDownA
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { musics } from '../../constants/musics'
+import EventSection from '../../components/EventsSection'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -22,48 +23,48 @@ export default function Home() {
 
   const musicSectionRef = useRef<HTMLDivElement>(null);
 
-  const futureDate = new Date('2023-07-29T00:00:00');
+  // const futureDate = new Date('2023-07-29T00:00:00');
 
-  const calculateTimeLeft = (): TimeLeft => {
-    const difference = +new Date(futureDate) - +new Date();
-    let timeLeft: TimeLeft = {
-      days: 0,
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    };
+  // const calculateTimeLeft = (): TimeLeft => {
+  //   const difference = +new Date(futureDate) - +new Date();
+  //   let timeLeft: TimeLeft = {
+  //     days: 0,
+  //     hours: 0,
+  //     minutes: 0,
+  //     seconds: 0,
+  //   };
 
-    if (difference > 0) {
-      timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
-      };
-    }
+  //   if (difference > 0) {
+  //     timeLeft = {
+  //       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+  //       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+  //       minutes: Math.floor((difference / 1000 / 60) % 60),
+  //       seconds: Math.floor((difference / 1000) % 60),
+  //     };
+  //   }
 
-    return timeLeft;
-  };
+  //   return timeLeft;
+  // };
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
+  // const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft());
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-    return () => clearTimeout(timer);
-  });
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setTimeLeft(calculateTimeLeft());
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // });
 
-  const { days, hours, minutes, seconds } = timeLeft;
+  // const { days, hours, minutes, seconds } = timeLeft;
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
 
 
   return (
     <>
       <Head>
         <title>Homepage | The revolutionary group</title>
-        <meta name="description" content="ndrew is a gospel music minister called to bring God&apos;s divine presence to worshipers and to those who
+        <meta name="description" content="Andrew is a gospel music minister called to bring God&apos;s divine presence to worshipers and to those who
               would dare to praise Him in every nation of the world and to use music to build
               an unforgettable intimate fellowship between believers and God as well ministration to the unsaved." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -84,7 +85,9 @@ export default function Home() {
               would dare to praise Him in every nation of the world and to use music to build
               an unforgettable intimate fellowship between believers and God as well ministration to the unsaved. </p>
             <div className={styles.cta}>
-              <button>Read about Andrew</button>
+              <Link href='/about'>
+                <button>Read about Andrew</button>
+              </Link>
               <button>View musics</button>
             </div>
           </div>
@@ -97,85 +100,8 @@ export default function Home() {
           {/* </ScrollLink> */}
         </div>
 
-        <div className={styles.eventsSection} ref={musicSectionRef}>
-          <span className={styles.blurredArea}></span>
-          <span className={styles.blurredArea}></span>
-          <div className={styles.eventAlertContainer}>
-            <div className={styles.eventAlertContainer__topArea}>
-              <h3>Upcoming Event</h3>
-            </div>
-            <div className={styles.eventInfo}>
-              <div className={styles.eventInfo__lhs}>
-                <div className={styles.eventTitle}>
-                  <span>DETAILS:</span>
-                  <h1>Album launch</h1>
-                </div>
-                <div className={styles.eventDateInfo}>
-                  <p>29th July, 2023</p>
-                  <button>View more info</button>
-                </div>
-              </div>
-              <div className={styles.eventInfo__rhs}>
-                <div className={styles.dateContainer}>
-                  <div className={styles.dateContainer__count}>
-                    <p>Days left</p>
-                    <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                    <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                  </div>
-                  <span className={styles.column}></span>
-                  <div className={styles.dateContainer__count}>
-                    <p>Hours left</p>
-                    <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                    <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                  </div>
-                  <span className={styles.column}></span>
-                  <div className={styles.dateContainer__count}>
-                    <p>Minutes left</p>
-                    <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                    <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                  </div>
-                  <span className={styles.column}></span>
-                  <div className={styles.dateContainer__count}>
-                    <p>Seconds left</p>
-                    <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                    <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles.recentMusicContainer}>
-            <div className={styles.recentMusicContainer__topArea}>
-              <h3>Recent Musics</h3>
-              {/* <Link href='/' legacyBehavior>
-                <a>See all</a>
-              </Link> */}
-            </div>
-            <div className={styles.recentMusicContainer__musics}>
-              {
-                musics.map((eachMusic, index) => (
-                  <div className={styles.eachMusicCard} key={index}>
-                    <div className={styles.image}>
-                      <Image src={images.He_Has_Done_It_All_Cover} alt='music cover' />
-                    </div>
-                    <div className={styles.musicInfo}>
-                      <div className={styles.musicInfo__top}>
-                        <h2>{eachMusic.name}</h2>
-                        <p>{eachMusic.shortDescription}</p>
-                      </div>
-                      <div className={styles.cta}>
-                        <button>Read more</button>
-                        <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button>
-                      </div>
-                    </div>
-                  </div>
-                ))
-              }
-            </div>
-            <Link href='/' legacyBehavior>
-              <button className={styles.seeMoreBtn}>See all</button>
-            </Link>
-          </div>
+        <div ref={musicSectionRef}>
+          <EventSection />
         </div>
 
         <div className={styles.aboutSection}>
@@ -200,7 +126,9 @@ export default function Home() {
                   listeners spirit and compel them to offer sanctified sacrifices of
                   praise to God  through the calves of their lips. </p>
               </div>
-              <button>Read more</button>
+              <Link href='/about'>
+                <button>Read more</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -212,19 +140,19 @@ export default function Home() {
           </div>
           <div className={styles.socials}>
             <Link href='/' target='_blank'>
-            <span><FacebookIcon /></span>
+              <span><FacebookIcon /></span>
             </Link>
             <Link href='https://instagram.com/gracefulandrew?igshid=YmMyMTA2M2Y=' target='_blank'>
-            <span><InstagramIcon /></span>
+              <span><InstagramIcon /></span>
             </Link>
             <Link href='https://youtube.com/@Gracefulandrew' target='_blank'>
-            <span><YoutubeIcon /></span>
+              <span><YoutubeIcon /></span>
             </Link>
             <Link href='/' target='_blank'>
-            <span><TwitterIcon /></span>
+              <span><TwitterIcon /></span>
             </Link>
             <Link href='/' target='_blank'>
-            <span><MailIcon /></span>
+              <span><MailIcon /></span>
             </Link>
           </div>
         </div>

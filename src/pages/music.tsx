@@ -4,6 +4,7 @@ import Image from "next/image";
 import images from "../../public/images";
 import { PlayIcon } from "../../components/SVGs/SVGicons";
 import Player from "../../components/Player";
+import { musics } from "../../constants/musics";
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -11,6 +12,7 @@ interface MusicProps {
 }
 
 const Music: FunctionComponent<MusicProps> = (): ReactElement => {
+
     return (
         <div className={styles.musicPage}>
             <div className={styles.topPageArea}>
@@ -20,14 +22,10 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                 <span>Musics</span>
             </div>
             <div className={styles.bodyContent}>
-                {([...Array(1)]).map((each, index) =>
+                {/* {([...Array(1)]).map((each, index) =>
                     <div className={styles.eachMusic} key={index}>
                         <div className={styles.eachMusic__image}>
                             <Image src={images.He_Has_Done_It_All_Cover} alt='music cover' />
-                            {/* <div className={styles.controlArea}>
-                                <div className={styles.overlay}></div>
-                                <PlayIcon />
-                            </div> */}
                         </div>
                         <div className={styles.eachMusic__info}>
                             <span>He Has Done It All</span>
@@ -35,14 +33,30 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <p>Christian & Gospel</p>
                             <div className={styles.cta}>
                                 <Player src='/musics/he_has_done_it_all.mp3' />
-                                {/* <button> */}
-                                    <a href="/musics/he_has_done_it_all.mp3" download="he_has_done_it_all.mp3">Download audio</a>
-                                {/* </button> */}
+                                <a href="/musics/he_has_done_it_all.mp3" download="he_has_done_it_all.mp3">Download audio</a>
                             </div>
-                            {/* <button>Play music</button> */}
-                            {/* <button>Pause music</button> */}
                             <div className={styles.socials}>
-                                {/* <span>< /></span> */}
+                            </div>
+                        </div>
+                    </div>)} */}
+                {musics.map((eachMusic, index) =>
+                    <div className={styles.eachMusic} key={index}>
+                        <div className={styles.eachMusic__image}>
+                            <Image src={eachMusic.image} alt='music cover' />
+                            {/* <div className={styles.controlArea}>
+                            <div className={styles.overlay}></div>
+                            <PlayIcon />
+                        </div> */}
+                        </div>
+                        <div className={styles.eachMusic__info}>
+                            <span>{eachMusic.name}</span>
+                            <h3>{eachMusic.year}</h3>
+                            <p>{eachMusic.genre}</p>
+                            <div className={styles.cta}>
+                                <Player src={eachMusic.path} />  
+                                <a href={eachMusic.path} download={eachMusic.music}>Download audio</a>
+                            </div>
+                            <div className={styles.socials}>
                             </div>
                         </div>
                     </div>)}

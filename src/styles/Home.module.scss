@@ -427,6 +427,19 @@
 		}
 	}
 
+	.fullEventsSection {
+		@extend .eventsSection;
+		min-height: auto;
+		max-height: auto;
+
+		.moreInfoSection {
+			min-height: calc(100vh - 81px - 57.3px);
+			max-height: calc(100vh - 81px - 57.3px);
+			border: 1px solid #fff;
+			width: 100%;
+		}
+	}
+
 	.aboutSection {
 		@extend .heroContainer;
 		flex-direction: column;
