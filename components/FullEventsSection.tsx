@@ -5,6 +5,7 @@ import styles from '../src/styles/Home.module.scss';
 import { musics } from "../constants/musics";
 import images from "../public/images";
 import { PauseIcon, PlayIcon } from "./SVGs/SVGicons";
+import React from "react";
 
 interface FullEventsSectionProps {
 
@@ -64,7 +65,7 @@ const FullEventsSection: FunctionComponent<FullEventsSectionProps> = (): ReactEl
             <span className={styles.blurredArea}></span>
             <span className={styles.blurredArea}></span>
             <div className={styles.eventAlertContainer}>
-                <div className={styles.eventAlertContainer__topArea}>
+                <div className={styles.eventAlertContainer__topArea}> 
                     <h3>Upcoming Event</h3>
                 </div>
                 <div className={styles.eventInfo}>

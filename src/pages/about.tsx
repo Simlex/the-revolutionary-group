@@ -13,7 +13,7 @@ const About: FunctionComponent<AboutProps> = (): ReactElement => {
             <div className={styles.lhs}>
                 <h3>About Andrew Godwin</h3>
                 <div className={styles.lhs__bodyContent}>
-                    <p>Andrew is called to bring God's divine presence to worshipers and to those
+                    <p>Andrew is called to bring God&apos;s divine presence to worshipers and to those
                         who would dare to praise Him in every nation of the world and to use music
                         to build an unforgettable intimate fellowship between believers and God as
                         well ministration to the unsaved.
@@ -40,7 +40,7 @@ const About: FunctionComponent<AboutProps> = (): ReactElement => {
                     </p>
                     <p><span>ABOUT Andrew Godwin&apos;s MINISTRY</span>
                         The Revelatory Generation Music ministry is an international, non -denominational organization established
-                        for the sole purpose of bringing God's divine presence to worshipers and those who would dare to praise
+                        for the sole purpose of bringing God&apos;s divine presence to worshipers and those who would dare to praise
                         Him in every nation of the world. To use music to build an unforgettable intimate fellowship between
                         believers and God as well ministration to the unsaved.
                     </p>

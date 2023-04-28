@@ -51,6 +51,10 @@
 			display: grid;
 			place-items: center;
 			position: relative;
+			@include tablet {
+				height: auto;
+				// border: 1px solid;
+			}
 			.imageArea {
 				width: 300px;
 				height: 300px;
