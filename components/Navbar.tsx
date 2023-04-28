@@ -54,9 +54,9 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                         <Link href='/events' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/events' ? styles.active : ''}>Events</li>
                                         </Link>
-                                        <Link href='/blog' onClick={() => setIsNavOpen(false)}>
+                                        {/* <Link href='/blog' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/blog' ? styles.active : ''}>Blog</li>
-                                        </Link>
+                                        </Link> */}
                                         <Link href='/about' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/about' ? styles.active : ''}>About me</li>
                                         </Link>
@@ -84,19 +84,21 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                             <Link href='/events'>
                                 <li className={route.pathname == '/events' ? styles.active : ''}>Events</li>
                             </Link>
-                            <Link href='/blog'>
+                            {/* <Link href='/blog'>
                                 <li className={route.pathname == '/blog' ? styles.active : ''}>Blog</li>
-                            </Link>
+                            </Link> */}
                             <Link href='/about'>
                                 <li className={route.pathname == '/about' ? styles.active : ''}>About me</li>
                             </Link>
-                            <Link href='/contact'>
+                            {/* <Link href='/contact'>
                                 <li className={route.pathname == '/contact' ? styles.active : ''}>Contact me</li>
-                            </Link>
+                            </Link> */}
                         </ul>
-                        <div className={styles.cta}>
-                            <button onClick={() => setBookingPanelVisibility(true)}>Book now</button>
-                        </div>
+                        <Link href='/contact'>
+                            <div className={styles.cta}>
+                                <button onClick={() => setBookingPanelVisibility(true)}>Contact me</button>
+                            </div>
+                        </Link>
                     </div>
             }
         </>
