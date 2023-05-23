@@ -5,16 +5,17 @@ import styles from '../src/styles/Home.module.scss';
 import { musics } from "../constants/musics";
 import images from "../public/images";
 import { PauseIcon, PlayIcon } from "./SVGs/SVGicons";
+import { motion } from 'framer-motion';
 
 interface EventSectionProps {
 
 }
 
 interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+    days: number;
+    hours: number;
+    minutes: number;
+    seconds: number;
 }
 
 const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
@@ -54,7 +55,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
     });
 
     const { days, hours, minutes, seconds } = timeLeft;
-    
+
     const [isPlaying, setIsPlaying] = useState(false);
 
 
@@ -68,7 +69,10 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                     <h3>Upcoming Event</h3>
                 </div>
                 <div className={styles.eventInfo}>
-                    <div className={styles.eventInfo__lhs}>
+                    <motion.div className={styles.eventInfo__lhs}
+                        initial={{ opacity: 0, scale: 1, y: 80 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.2, ease: 'linear' }}>
                         <div className={styles.eventTitle}>
                             <span>DETAILS:</span>
                             <h1>Album launch</h1>
@@ -79,8 +83,11 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                                 <button>View more info</button>
                             </Link>
                         </div>
-                    </div>
-                    <div className={styles.eventInfo__rhs}>
+                    </motion.div>
+                    <motion.div className={styles.eventInfo__rhs}
+                        initial={{ opacity: 0, scale: 1, y: -80 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.2, ease: 'linear' }}>
                         <div className={styles.dateContainer}>
                             <div className={styles.dateContainer__count}>
                                 <p>Days left</p>
@@ -106,7 +113,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                                 <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
             <div className={styles.recentMusicContainer}>

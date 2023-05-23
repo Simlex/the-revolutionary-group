@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { musics } from '../../constants/musics'
 import EventSection from '../../components/EventsSection'
+import { motion } from 'framer-motion';
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -75,11 +76,17 @@ export default function Home() {
 
         <div className={styles.heroContainer}>
           <div className={styles.imageContainer}>
-            <div className={styles.imageArea}>
-              <Image src={images.andrew} alt='artist image' />
-            </div>
+            <motion.div className={styles.imageArea}
+              initial={{ opacity: 0, scale: 0.6, x: 80 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}>
+              <Image src={images.AndrewPortrait2} alt='artist image' />
+            </motion.div>
           </div>
-          <div className={styles.artistInfo}>
+          <motion.div className={styles.artistInfo}
+            initial={{ opacity: 0, scale: 1, y: 80 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}>
             <h2>MINISTER ANDREW</h2>
             <p>Andrew is called to bring God&apos;s divine presence to worshipers and to those who
               would dare to praise Him in every nation of the world and to use music to build
@@ -90,7 +97,7 @@ export default function Home() {
               </Link>
               <button>View musics</button>
             </div>
-          </div>
+          </motion.div>
           {/* <ScrollLink to="musicSection" smooth={true} duration={500} offset={0}> */}
           <div className={styles.scrollNext}
             onClick={() => musicSectionRef.current?.scrollIntoView({ behavior: "smooth" })}>
@@ -109,10 +116,16 @@ export default function Home() {
             <h3>About Minister Andrew</h3>
           </div>
           <div className={styles.content}>
-            <div className={styles.content__image}>
-              <Image src={images.andrew} alt='Musician' />
-            </div>
-            <div className={styles.content__textInfo}>
+            <motion.div className={styles.content__image}
+              initial={{ opacity: 0, scale: 1, y: 40 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'linear' }}>
+              <Image src={images.AndrewStanding1} alt='Musician' />
+            </motion.div>
+            <motion.div className={styles.content__textInfo}
+              initial={{ opacity: 0, scale: 1, y: -80 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: 'linear' }}>
               <div className={styles.text}>
                 <p>Andrew is called to bring God&apos;s divine presence to worshipers and
                   to those who would dare to praise Him in every nation of the world
@@ -129,7 +142,7 @@ export default function Home() {
               <Link href='/about'>
                 <button>Read more</button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </div>
 
