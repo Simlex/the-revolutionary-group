@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
         isWelcomeScreenVisible ?
           <div className={isWelcomeScreenStyle ? styles.welcomeScreen : styles.welcomeScreenClose}>
             <div className={styles.image}>
-              <Image src={images.andrew} alt='Andrew' />
+              <Image src={images.AndrewPortrait2} alt='Andrew' />
             </div>
             <span>ANDREW GODWIN</span>
             <p>Welcomes you to <span>revelatorygeneration.net</span></p>
