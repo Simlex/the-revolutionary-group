@@ -9,6 +9,7 @@ import AndrewStanding3 from "./images/Andrew_Stanidng_3.jpg";
 import AndrewPortrait1 from "./images/Andrew_Portrait_1.jpg";
 import AndrewPortrait2 from "./images/Andrew_Portrait_2.jpg";
 import AndrewSitting from "./images/Andrew_Sitting.jpg";
+import Great_God_Cover from "./images/Great_God_Cover.jpg";
 // import spotify from "./images/spotify.jpg";
 // import youtube from "./images/youtube.jpg";
 // import instagram from "./images/instagram.jpg";
@@ -25,5 +26,6 @@ export default {
   AndrewStanding3,
   AndrewPortrait1,
   AndrewPortrait2,
-  AndrewSitting
+  AndrewSitting,
+  Great_God_Cover
 };
