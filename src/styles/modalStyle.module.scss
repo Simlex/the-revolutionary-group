@@ -1,0 +1,95 @@
+@import "./variables.scss";
+@import "./reuseables";
+
+.modalParent, .modalParentInvisible {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 120;
+    display: grid;
+    place-items: center;
+    .overlay {
+        background-color: rgba($black, 0.4);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    .modalContainer {
+        background-color: $white;
+        padding: 20px;
+        border-radius: 8px;
+        min-height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateY(0px);
+        animation: bumpDown 400ms cubic-bezier(0.65, -0.07, 0.25, 1.24);
+        z-index: 120 !important;
+        // max-width: 350px;
+        max-width: fit-content;
+        @include tablet {
+            width: 100%;
+            max-width: 80%;
+        }
+      
+        @keyframes bumpDown {
+          from {
+            transform: translateY(24px);
+            opacity: 0;
+          }
+        }
+        // p {
+        //     font-size: $font-size-20;
+        //     font-weight: $fontWeight-500;
+        //     width: 85%;
+        //     margin: 0 auto;
+        //     margin-bottom: 16px;
+        //     text-align: center;
+        // }
+        &__actions, &__actionConfirmation {
+            // border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            button {
+                background-color: $primary-color;
+                color: $white;
+                padding: 8px;
+                border-radius: 4px;
+                border: none;
+                cursor: pointer;
+                &:hover {
+                    background-color: $secondary-color;
+                }
+                &:nth-child(2) {
+                    background-color: $failed-color;
+                    &:hover {
+                        background-color: darken($color: $failed-color, $amount: 10%);
+                    }
+                }
+            }
+        }
+        &__actionConfirmation {
+            button {
+                &:hover {
+                    background-color: darken($color: $primary-color, $amount: 10%);
+                }
+                &:nth-child(2) {
+                    background-color: $primary-color;
+                    &:hover {
+                        background-color: darken($color: $primary-color, $amount: 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modalParentInvisible {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}

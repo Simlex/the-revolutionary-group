@@ -3,6 +3,7 @@ import { FunctionComponent, ReactElement } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import styles from '../src/styles/Layout.module.scss'
+import MobileFooter from "./MobileFooter";
 
 interface LayoutProps {
     children?: React.ReactNode;
@@ -20,6 +21,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }): ReactElement => {
             <Navbar />
             <div className={styles.innerPage}>
                 {children}
+                <MobileFooter />
             </div>
             <Footer />
         </>

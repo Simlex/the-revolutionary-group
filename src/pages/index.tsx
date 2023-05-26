@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react'
 import { musics } from '../../constants/musics'
 import EventSection from '../../components/EventsSection'
 import { motion } from 'framer-motion';
+import MobileFooter from '../../components/MobileFooter'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -146,7 +147,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.contactSection}>
+        {/* <div className={styles.contactSection}>
           <div className={styles.topArea}>
             <h3>Contact me</h3>
             <p>For booking purposes, Feel free to contact me using any of the platforms beloe</p>
@@ -168,7 +169,7 @@ export default function Home() {
               <span><MailIcon /></span>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )
