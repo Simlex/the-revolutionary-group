@@ -18,6 +18,8 @@ const Player = ({ src }: PlayerProps) => {
         setPlaying(!playing);
     };
 
+    // TODO: Add functionality to pause music when clicked outside. 
+
     return (
         <div>
             <audio ref={audioRef}>
