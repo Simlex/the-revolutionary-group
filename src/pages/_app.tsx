@@ -6,6 +6,18 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Welcome.module.scss';
 import Image from 'next/image';
 import images from '../../public/images';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import '../styles/NProgress.css'; 
+import { Router } from 'next/router';  
+
+
+//Route Events. 
+Router.events.on('routeChangeStart', () => NProgress.start()); 
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
+
+NProgress.configure({ showSpinner: false });
 
 export default function App({ Component, pageProps }: AppProps) {
 

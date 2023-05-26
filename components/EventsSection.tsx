@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { FunctionComponent, ReactElement, useEffect, useRef, useState } from "react";
 import styles from '../src/styles/Home.module.scss';
@@ -6,6 +6,8 @@ import { musics } from "../constants/musics";
 import images from "../public/images";
 import { PauseIcon, PlayIcon } from "./SVGs/SVGicons";
 import { motion } from 'framer-motion';
+import MusicInfoModal from "./Music/MusicInfoModal";
+import { MusicModel } from "../models/musicModel";
 
 interface EventSectionProps {
 
@@ -58,99 +60,115 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const [musicInfoModalIsVisible, setMusicInfoModalIsVisible] = useState(false);
+
+    const [selectedMusic, setSelectedMusic] = useState<MusicModel>(); 
 
     return (
+        <>
+            <MusicInfoModal
+                visibility={musicInfoModalIsVisible}
+                setVisibility={setMusicInfoModalIsVisible}
+                musicDescription={selectedMusic?.description as string}
+                musicImage={selectedMusic?.image as StaticImageData}
+                musicPath={selectedMusic?.path as string}  
+                musicTitle={selectedMusic?.name as string}
+            />
 
-        <div className={styles.eventsSection} ref={musicSectionRef}>
-            <span className={styles.blurredArea}></span>
-            <span className={styles.blurredArea}></span>
-            <div className={styles.eventAlertContainer}>
-                <div className={styles.eventAlertContainer__topArea}>
-                    <h3>Upcoming Event</h3>
+            <div className={styles.eventsSection} ref={musicSectionRef}>
+                <span className={styles.blurredArea}></span>
+                <span className={styles.blurredArea}></span>
+                <div className={styles.eventAlertContainer}>
+                    <div className={styles.eventAlertContainer__topArea}>
+                        <h3>Upcoming Event</h3>
+                    </div>
+                    <div className={styles.eventInfo}>
+                        <motion.div className={styles.eventInfo__lhs}
+                            initial={{ opacity: 0, scale: 1, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                            <div className={styles.eventTitle}>
+                                <span>DETAILS:</span>
+                                <h1>Album launch</h1>
+                            </div>
+                            <div className={styles.eventDateInfo}>
+                                <p>29th July, 2023</p>
+                                <Link href='/events'>
+                                    <button>View more info</button>
+                                </Link>
+                            </div>
+                        </motion.div>
+                        <motion.div className={styles.eventInfo__rhs}
+                            initial={{ opacity: 0, scale: 1, y: -80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                            <div className={styles.dateContainer}>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Days left</p>
+                                    <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Hours left</p>
+                                    <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Minutes left</p>
+                                    <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Seconds left</p>
+                                    <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
-                <div className={styles.eventInfo}>
-                    <motion.div className={styles.eventInfo__lhs}
-                        initial={{ opacity: 0, scale: 1, y: 80 }}
-                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.2, ease: 'linear' }}>
-                        <div className={styles.eventTitle}>
-                            <span>DETAILS:</span>
-                            <h1>Album launch</h1>
-                        </div>
-                        <div className={styles.eventDateInfo}>
-                            <p>29th July, 2023</p>
-                            <Link href='/events'>
-                                <button>View more info</button>
-                            </Link>
-                        </div>
-                    </motion.div>
-                    <motion.div className={styles.eventInfo__rhs}
-                        initial={{ opacity: 0, scale: 1, y: -80 }}
-                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.2, ease: 'linear' }}>
-                        <div className={styles.dateContainer}>
-                            <div className={styles.dateContainer__count}>
-                                <p>Days left</p>
-                                <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                                <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Hours left</p>
-                                <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                                <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Minutes left</p>
-                                <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                                <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Seconds left</p>
-                                <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                                <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-            <div className={styles.recentMusicContainer}>
-                <div className={styles.recentMusicContainer__topArea}>
-                    <h3>Recent Musics</h3>
-                    {/* <Link href='/' legacyBehavior>
+                <div className={styles.recentMusicContainer}>
+                    <div className={styles.recentMusicContainer__topArea}>
+                        <h3>Recent Musics</h3>
+                        {/* <Link href='/' legacyBehavior>
                 <a>See all</a>
               </Link> */}
-                </div>
-                <div className={styles.recentMusicContainer__musics}>
-                    {
-                        musics.map((eachMusic, index) => (
-                            <div className={styles.eachMusicCard} key={index}>
-                                <div className={styles.image}>
-                                    <Image src={images.He_Has_Done_It_All_Cover} alt='music cover' />
-                                </div>
-                                <div className={styles.musicInfo}>
-                                    <div className={styles.musicInfo__top}>
-                                        <h2>{eachMusic.name}</h2>
-                                        <p>{eachMusic.shortDescription}</p>
+                    </div>
+                    <div className={styles.recentMusicContainer__musics}>
+                        {
+                            musics.map((eachMusic, index) => (
+                                <div className={styles.eachMusicCard} key={index}>
+                                    <div className={styles.image}>
+                                        <Image src={eachMusic.image} alt='music cover' />
                                     </div>
-                                    <div className={styles.cta}>
-                                        <Link href='/music'>
-                                            <button>Read more</button>
-                                        </Link>
-                                        <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button>
+                                    <div className={styles.musicInfo}>
+                                        <div className={styles.musicInfo__top}>
+                                            <h2>{eachMusic.name}</h2>
+                                            <p>{eachMusic.shortDescription}</p>
+                                        </div>
+                                        <div className={styles.cta}>
+                                            {/* <Link href='/music'> */}
+                                            <button onClick={() => {
+                                                setSelectedMusic(eachMusic)
+                                                setMusicInfoModalIsVisible(true)
+                                            }}>Read more</button>
+                                            {/* </Link> */}
+                                            {/* <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button> */}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
+                    </div>
+                    <Link href='/music' legacyBehavior>
+                        <button className={styles.seeMoreBtn}>See all</button>
+                    </Link>
                 </div>
-                <Link href='/music' legacyBehavior>
-                    <button className={styles.seeMoreBtn}>See all</button>
-                </Link>
             </div>
-        </div>
+        </>
     );
 }
 
