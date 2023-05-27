@@ -96,8 +96,11 @@ export default function Home() {
               <Link href='/about'>
                 <button>Read about Andrew</button>
               </Link>
-              <button>View musics</button>
-            </div>
+              <Link href='/music'> 
+                <button>View musics</button>      
+              </Link>  
+                {/* <button onClick={() => musicSectionRef.current?.scrollTo({top: 0})}> View musics</button>       */}
+            </div>  
           </motion.div>
           {/* <ScrollLink to="musicSection" smooth={true} duration={500} offset={0}> */}
           <div className={styles.scrollNext}
@@ -109,7 +112,7 @@ export default function Home() {
         </div>
 
         <div ref={musicSectionRef}>
-          <EventSection />
+          <EventSection /> 
         </div>
 
         <div className={styles.aboutSection}>

@@ -14,3 +14,19 @@ export interface MusicModel {
   path: string;
   music: string;
 }
+
+export interface EachAlbumMusicModel {
+  name: string;
+  socialLinks: {
+    youtube: string;
+    spotify: string;
+  }[];
+  year: string;
+  genre: string;
+  path: string;
+  music: string;
+}
+export interface AlbumModel {
+  albumName: string,
+  musics: EachAlbumMusicModel[]
+}

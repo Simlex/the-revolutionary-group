@@ -1,10 +1,10 @@
-import { FunctionComponent, ReactElement } from "react";
+import { FunctionComponent, ReactElement, useState } from "react";
 import styles from '../styles/Music.module.scss';
 import Image from "next/image";
 import images from "../../public/images";
 import { PlayIcon } from "../../components/SVGs/SVGicons";
 import Player from "../../components/Player";
-import { musics } from "../../constants/musics";
+import { albums, musics } from "../../constants/musics";
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -12,6 +12,8 @@ interface MusicProps {
 }
 
 const Music: FunctionComponent<MusicProps> = (): ReactElement => {
+
+    const [showAlbumMusics, setShowAlbumMusics] = useState(false);
 
     return (
         <div className={styles.musicPage}>
@@ -39,6 +41,28 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             </div>
                         </div>
                     </div>)} */}
+                {albums.map((eachAlbum, index) =>
+                    <div className={styles.eachAlbum} key={index}>
+                        <div className={styles.eachAlbum__title}>
+                            <h2>{eachAlbum.albumName}</h2>
+                            <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>
+                        </div>
+                        {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
+                            return (
+                                <div className={styles.eachAlbum__music} key={index}>
+                                    <span>{eachMusic.name}</span>
+                                    {/* <h3>{eachMusic.year}</h3> */}
+                                    {/* <p>{eachMusic.genre}</p> */}
+                                    <div className={styles.cta}>
+                                        <Player src={eachMusic.path} />
+                                        <a href={eachMusic.path} download={eachMusic.music}>Download audio</a>
+                                    </div>
+                                    {/* <div className={styles.socials}>
+                                    </div> */}
+                                </div>
+                            )
+                        })}
+                    </div>)}
                 {musics.map((eachMusic, index) =>
                     <div className={styles.eachMusic} key={index}>
                         <div className={styles.eachMusic__image}>
@@ -53,7 +77,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <h3>{eachMusic.year}</h3>
                             <p>{eachMusic.genre}</p>
                             <div className={styles.cta}>
-                                <Player src={eachMusic.path} />  
+                                <Player src={eachMusic.path} />
                                 <a href={eachMusic.path} download={eachMusic.music}>Download audio</a>
                             </div>
                             <div className={styles.socials}>

@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { FunctionComponent, ReactElement, useEffect, useRef, useState } from "react";
+import { FunctionComponent, ReactElement, RefObject, useEffect, useRef, useState } from "react";
 import styles from '../src/styles/Home.module.scss';
 import { musics } from "../constants/musics";
 import images from "../public/images";
@@ -62,7 +62,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
 
     const [musicInfoModalIsVisible, setMusicInfoModalIsVisible] = useState(false);
 
-    const [selectedMusic, setSelectedMusic] = useState<MusicModel>(); 
+    const [selectedMusic, setSelectedMusic] = useState<MusicModel>();
 
     return (
         <>
@@ -71,13 +71,14 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                 setVisibility={setMusicInfoModalIsVisible}
                 musicDescription={selectedMusic?.description as string}
                 musicImage={selectedMusic?.image as StaticImageData}
-                musicPath={selectedMusic?.path as string}  
+                musicPath={selectedMusic?.path as string}
                 musicTitle={selectedMusic?.name as string}
             />
 
             <div className={styles.eventsSection} ref={musicSectionRef}>
                 <span className={styles.blurredArea}></span>
                 <span className={styles.blurredArea}></span>
+
                 <div className={styles.eventAlertContainer}>
                     <div className={styles.eventAlertContainer__topArea}>
                         <h3>Upcoming Event</h3>
@@ -130,12 +131,13 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                         </motion.div>
                     </div>
                 </div>
+
                 <div className={styles.recentMusicContainer}>
                     <div className={styles.recentMusicContainer__topArea}>
                         <h3>Recent Musics</h3>
                         {/* <Link href='/' legacyBehavior>
-                <a>See all</a>
-              </Link> */}
+                            <a>See all</a>
+                        </Link> */}
                     </div>
                     <div className={styles.recentMusicContainer__musics}>
                         {
@@ -164,10 +166,66 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                         }
                     </div>
                     <Link href='/music' legacyBehavior>
-                        <button className={styles.seeMoreBtn}>See all</button>
+                        <button className={styles.seeMoreBtn}>See all musics</button>
                     </Link>
                 </div>
-            </div>
+
+                <div className={styles.youtubeVideosContainer}>
+                    <div className={styles.youtubeVideosContainer__topArea}>
+                        <h3>Videos</h3>
+                    </div>
+                    <div className={styles.youtubeVideosContainer__videos}>
+                        <motion.iframe
+                            width='100%'
+                            height='100%'
+                            src="https://www.youtube.com/embed/Fz6KwG7fo4k"
+                            title="He's done it all"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                        </motion.iframe>
+                        <motion.video
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}
+                            src="/videos/live_program.mp4"
+                            typeof="video/mp4"
+                            controls>
+                        </motion.video>
+                        <motion.iframe
+                            width='100%'
+                            height='100%'
+                            src="https://www.youtube.com/embed/UXpZncegWP8"
+                            title="Great God"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                        </motion.iframe>
+                        <motion.iframe
+                            width='100%'
+                            height='100%'
+                            // src="https://www.youtube.com/embed/KnVZuXLqHtQ?autoplay=1&&showinfo=0&loop=1&mute=1"
+                            src="https://www.youtube.com/embed/KnVZuXLqHtQ"
+                            title="African Praise Medley by Andrew Godwin"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                        </motion.iframe>
+                    </div>
+                    <Link href='/' legacyBehavior>
+                        <button className={styles.seeMoreBtn}>See more videos</button>
+                    </Link>
+                </div>
+            </div >
         </>
     );
 }
