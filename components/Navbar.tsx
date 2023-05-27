@@ -27,7 +27,7 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                 onMobile ?
                     <div className={`${styles.navbarContainer} ${styles.container}`}>
                         <div className={styles.navbarContainer__logo}>
-                            <Link href="/"><Image src={images.logo} alt="app__logo" /></Link>
+                            <Link href="/"><Image src={images.logo} alt="app__logo" fill /></Link>
                         </div>
                         <div className={styles.navbarContainer__menuIcon} onClick={() => setIsNavOpen(true)}>
                             <HamburgerMenuIcon />
@@ -37,7 +37,7 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                             <div className={styles.mobileNavContainer}>
                                 <div className={styles.mobileNavContainer__topArea}>
                                     <div className={styles.logo}>
-                                        <Link href="/"><Image src={images.logo} alt="app__logo" /></Link>
+                                        <Link href="/"><Image src={images.logo} alt="app__logo" fill /></Link>
                                     </div>
                                     <div className={styles.closeIcon} onClick={() => setIsNavOpen(false)}>
                                         <CloseMenuIcon />

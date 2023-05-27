@@ -18,7 +18,7 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
             transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}>
             <Link href='/'>
                 <div className={styles.footerSection__image}>
-                    <Image src={images.logo} alt='Logo' />
+                    <Image src={images.logo} alt='Logo' fill />
                 </div> 
             </Link>
             <div className={styles.footerSection__quickLinks}>

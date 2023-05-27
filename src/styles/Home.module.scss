@@ -64,6 +64,7 @@
 				overflow: hidden;
 				// position: sticky;
 				// top: 100px;
+				position: relative;
 				img {
 					object-fit: cover;
 				}
@@ -375,6 +376,10 @@
 						height: 120px;
 						border-radius: 12px;
 						overflow: hidden;
+						position: relative;
+						img {
+							object-fit: contain;
+						}
 					}
 					.musicInfo {
 						display: flex;
@@ -453,12 +458,16 @@
 				display: flex;
 				flex-wrap: nowrap;
 				overflow-x: auto;
+				&::-webkit-scrollbar {
+					display: none;
+				}
 				gap: 20px;
 				@include tablet {
 					flex-direction: column;
 					overflow: hidden;
 				}
-				iframe, video {
+				iframe,
+				video {
 					border-radius: 10px;
 					height: 240px;
 					border: 1px solid rgba($color: #fff, $alpha: 0.5);
@@ -470,7 +479,9 @@
 			}
 		}
 
-		.eventAlertContainer, .recentMusicContainer, .youtubeVideosContainer {
+		.eventAlertContainer,
+		.recentMusicContainer,
+		.youtubeVideosContainer {
 			@include tablet {
 				padding-left: 24px;
 				padding-right: 24px;

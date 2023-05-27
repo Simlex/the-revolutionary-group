@@ -35,7 +35,7 @@ const MusicInfoModal: FunctionComponent<MusicInfoModalProps> = ({ visibility, se
 
                 <div className={styles.infoContainer}>
                     <div className={styles.image}>
-                        <Image src={musicImage} alt="music cover" />
+                        <Image src={musicImage} alt="music cover" fill />
                     </div>
                     <div className={styles.musicDetails}>
                         {/* <h3>Great God</h3> */}

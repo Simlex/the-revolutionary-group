@@ -52,7 +52,7 @@ const About: FunctionComponent<AboutProps> = (): ReactElement => {
             </div>
             <div className={styles.rhs}>
                 <div className={styles.rhs__image}>
-                    <Image src={images.AndrewStanding1} alt="Andrew Godwin" />
+                    <Image src={images.AndrewStanding1} alt="Andrew Godwin" fill />
                 </div>
             </div>
         </div>

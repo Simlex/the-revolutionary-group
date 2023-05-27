@@ -4,7 +4,7 @@ export interface MusicModel {
   name: string;
   shortDescription: string;
   description: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   socialLinks: {
     youtube: string;
     spotify: string;

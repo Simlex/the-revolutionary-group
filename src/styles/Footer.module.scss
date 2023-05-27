@@ -26,7 +26,7 @@
     .lhs {
         display: flex;
         align-items: center;
-        gap: 24px;  
+        gap: 24px;
     }
 
     .logo {
@@ -37,9 +37,12 @@
         // border: 1px solid;
         border-right: 1.5px solid $primary-color;
         border-left: 1.5px solid $primary-color;
+        position: relative;
         img {
+            object-fit: contain;
             width: 40px;
             height: 40px;
+            scale: 0.8;
         }
     }
     p {
@@ -49,23 +52,24 @@
         display: flex;
         align-items: center;
         gap: 8px;
-    } 
+    }
 }
 
 .footerSection {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    // padding: 48px 64px; 
-    padding: $section-padding-desktop; 
+    // padding: 48px 64px;
+    padding: $section-padding-desktop;
     padding-top: 52px;
     padding-bottom: 52px;
     background-color: $primary-color;
     background-color: $black;
     color: $white;
     border-top: 8px solid $primary-color;
-    
+
     @include tablet {
+        padding-bottom: 152px;
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -77,6 +81,10 @@
         height: 52px;
         display: inline-flex;
         // border: 1px solid #fff;
+        position: relative;
+        img {
+            object-fit: contain;
+        }
     }
 
     &__quickLinks {

@@ -22,7 +22,7 @@ const Footer: FunctionComponent<FooterProps> = (): ReactElement => {
                     <div className={styles.lhs}>
                         <Link href='/'>
                             <div className={styles.logo}>
-                                <Image src={images.logo} alt="logo" />
+                                <Image src={images.logo} alt="logo" fill />
                             </div>
                         </Link>
                         <p>&copy;2023 The Revelationary Group</p>

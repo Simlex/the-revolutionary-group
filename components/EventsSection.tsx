@@ -142,9 +142,12 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                     <div className={styles.recentMusicContainer__musics}>
                         {
                             musics.map((eachMusic, index) => (
-                                <div className={styles.eachMusicCard} key={index}>
+                                <motion.div className={styles.eachMusicCard} key={index}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.2, ease: 'linear' }}>
                                     <div className={styles.image}>
-                                        <Image src={eachMusic.image} alt='music cover' />
+                                        <Image src={eachMusic.image} alt='music cover' fill />
                                     </div>
                                     <div className={styles.musicInfo}>
                                         <div className={styles.musicInfo__top}>
@@ -161,7 +164,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                                             {/* <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button> */}
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             ))
                         }
                     </div>
@@ -191,7 +194,8 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                             initial={{ opacity: 0, scale: 0.9, y: 80 }}
                             whileInView={{ opacity: 1, scale: 1, y: 0 }}
                             transition={{ duration: 0.2, ease: 'linear' }}
-                            src="/videos/live_program.mp4"
+                            // src="/videos/live_program.mp4"
+                            src="https://res.cloudinary.com/dxwpajciu/video/upload/v1685170105/The%20revelatory%20generation/videos/live_program_ze6wck.mp4"
                             typeof="video/mp4"
                             controls>
                         </motion.video>
@@ -221,7 +225,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                             transition={{ duration: 0.2, ease: 'linear' }}>
                         </motion.iframe>
                     </div>
-                    <Link href='/' legacyBehavior>
+                    <Link href='https://www.youtube.com/@Gracefulandrew' target='_blank'>
                         <button className={styles.seeMoreBtn}>See more videos</button>
                     </Link>
                 </div>

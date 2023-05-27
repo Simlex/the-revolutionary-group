@@ -6,6 +6,7 @@ import { PlayIcon } from "../../components/SVGs/SVGicons";
 import Player from "../../components/Player";
 import { albums, musics } from "../../constants/musics";
 import useResponsive from "../../hooks/useResponsiveness";
+import { motion } from 'framer-motion';
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -22,7 +23,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
         <div className={styles.musicPage}>
             <div className={styles.topPageArea}>
                 <div className={styles.topPageArea__image}>
-                    <Image src={images.musicBg} alt="background" />
+                    <Image src={images.musicBg} alt="background" fill />
                 </div>
                 <span>Musics</span>
             </div>
@@ -46,13 +47,22 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                     </div>)} */}
                 {onMobile && albums.map((eachAlbum, index) =>
                     <div className={styles.eachAlbum} key={index}>
-                        <div className={styles.eachAlbum__title}>
+                        <motion.div className={styles.eachAlbum__title}
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
                             <h2>{eachAlbum.albumName}</h2>
+                            <div className={styles.image}>
+                                <Image src={images.Amen_Album_Cover} alt="Album cover" fill />
+                            </div>
                             <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>
-                        </div>
+                        </motion.div>
                         {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
                             return (
-                                <div className={styles.eachAlbum__music} key={index}>
+                                <motion.div className={styles.eachAlbum__music} key={index}
+                                    initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                    transition={{ duration: 0.2, ease: 'linear' }}>
                                     <span>{eachMusic.name}</span>
                                     {/* <h3>{eachMusic.year}</h3> */}
                                     {/* <p>{eachMusic.genre}</p> */}
@@ -62,18 +72,17 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                                     </div>
                                     {/* <div className={styles.socials}>
                                     </div> */}
-                                </div>
+                                </motion.div>
                             )
                         })}
                     </div>)}
                 {musics.map((eachMusic, index) =>
-                    <div className={styles.eachMusic} key={index}>
+                    <motion.div className={styles.eachMusic} key={index}
+                        initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{ duration: 0.2, ease: 'linear' }}>
                         <div className={styles.eachMusic__image}>
-                            <Image src={eachMusic.image} alt='music cover' />
-                            {/* <div className={styles.controlArea}>
-                            <div className={styles.overlay}></div>
-                            <PlayIcon />
-                        </div> */}
+                            <Image src={eachMusic.image} alt='music cover' fill />
                         </div>
                         <div className={styles.eachMusic__info}>
                             <span>{eachMusic.name}</span>
@@ -86,7 +95,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <div className={styles.socials}>
                             </div>
                         </div>
-                    </div>)}
+                    </motion.div>)}
             </div>
         </div>
     );

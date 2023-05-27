@@ -81,7 +81,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 0.6, x: 80 }}
               whileInView={{ opacity: 1, scale: 1, x: 0 }}
               transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}>
-              <Image src={images.AndrewPortrait2} alt='artist image' />
+              <Image src={images.AndrewPortrait2} alt='artist image' fill />
             </motion.div>
           </div>
           <motion.div className={styles.artistInfo}
@@ -105,7 +105,7 @@ export default function Home() {
           {/* <ScrollLink to="musicSection" smooth={true} duration={500} offset={0}> */}
           <div className={styles.scrollNext}
             onClick={() => musicSectionRef.current?.scrollIntoView({ behavior: "smooth" })}>
-            <Image src={images.scroll_down} alt='scroll' />
+            <Image src={images.scroll_down} alt='scroll' fill />
             <ScrollDownArrowIcon />
           </div>
           {/* </ScrollLink> */}
@@ -124,7 +124,7 @@ export default function Home() {
               initial={{ opacity: 0, scale: 1, y: 40 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'linear' }}>
-              <Image src={images.AndrewStanding1} alt='Musician' />
+              <Image src={images.AndrewStanding1} alt='Musician' fill />
             </motion.div>
             <motion.div className={styles.content__textInfo}
               initial={{ opacity: 0, scale: 1, y: -80 }}
