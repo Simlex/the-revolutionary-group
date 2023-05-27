@@ -16,14 +16,19 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
             initial={{ opacity: 1, scale: 1, y: 30 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.2, ease: 'linear', delay: 0.2 }}>
-            <div className={styles.footerSection__image}>
-                <Image src={images.logo} alt='Logo' />
-            </div>
+            <Link href='/'>
+                <div className={styles.footerSection__image}>
+                    <Image src={images.logo} alt='Logo' />
+                </div> 
+            </Link>
             <div className={styles.footerSection__quickLinks}>
                 <h3>Quick links</h3>
                 <ul className={styles.links}>
                     <Link href='/'>
                         <li>Home</li>
+                    </Link>
+                    <Link href='/music'>
+                        <li>Musics</li>
                     </Link>
                     <Link href='/'>
                         <li>Contact</li>

@@ -110,7 +110,7 @@ const FullEventsSection: FunctionComponent<FullEventsSectionProps> = (): ReactEl
             </div>
 
             <div className={styles.moreInfoSection} ref={moreInfoSectionRef}> 
-                more info - insert graphics here
+                <Image src={images.Album_Launch_Flyer} alt="Event info" />   
             </div>
         </div>
     );

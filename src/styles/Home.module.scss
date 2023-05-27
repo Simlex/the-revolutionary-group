@@ -133,11 +133,18 @@
 		color: $white;
 		align-items: flex-start;
 		padding-top: 48px;
-		padding-bottom: 48px;
+		padding-bottom: 40px;
+		// padding-left: 0px;
+		// padding-right: 0px;
 		flex-direction: column;
 		gap: 52px;
 		position: relative;
 		overflow: hidden;
+
+		@include tablet {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
 
 		.blurredArea {
 			position: absolute;
@@ -429,6 +436,46 @@
 				border: none;
 			}
 		}
+
+		.youtubeVideosContainer {
+			@extend .recentMusicContainer;
+			@include tablet {
+				background-color: $white;
+				padding-top: 24px;
+				padding-bottom: 32px;
+				&__topArea {
+					color: $dark-grey;
+				}
+			}
+
+			&__videos {
+				margin-top: 16px;
+				display: flex;
+				flex-wrap: nowrap;
+				overflow-x: auto;
+				gap: 20px;
+				@include tablet {
+					flex-direction: column;
+					overflow: hidden;
+				}
+				iframe, video {
+					border-radius: 10px;
+					height: 240px;
+					border: 1px solid rgba($color: #fff, $alpha: 0.5);
+				}
+			}
+
+			button {
+				color: $dark-grey;
+			}
+		}
+
+		.eventAlertContainer, .recentMusicContainer, .youtubeVideosContainer {
+			@include tablet {
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+		}
 	}
 
 	.fullEventsSection {
@@ -437,10 +484,23 @@
 		max-height: auto;
 
 		.moreInfoSection {
-			min-height: calc(100vh - 81px - 57.3px);
-			max-height: calc(100vh - 81px - 57.3px);
-			border: 1px solid #fff;
+			// min-height: calc(100vh - 81px - 57.3px);
+			// max-height: calc(100vh - 81px - 57.3px);
+			// border: 1px solid #fff;
+			padding: 16px;
 			width: 100%;
+			max-width: 400px;
+			margin: 0 auto;
+			display: inline-flex;
+			@include tablet {
+				// min-height: calc(100vh - 81px - 57.3px);
+				max-height: auto;
+				max-width: auto;
+				display: inline-flex;
+				border: none;
+				// border: 1px solid #fff;
+				width: 100%;
+			}
 		}
 	}
 
@@ -554,15 +614,15 @@
 		display: flex;
 		align-items: flex-start;
 		justify-content: space-between;
-		// padding: 48px 64px; 
-		padding: $section-padding-desktop; 
+		// padding: 48px 64px;
+		padding: $section-padding-desktop;
 		padding-top: 52px;
 		padding-bottom: 52px;
 		background-color: $primary-color;
 		background-color: $black;
 		color: $white;
 		border-top: 8px solid $primary-color;
-		
+
 		@include tablet {
 			flex-direction: column;
 			align-items: center;
