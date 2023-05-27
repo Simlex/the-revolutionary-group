@@ -5,6 +5,7 @@ import images from "../../public/images";
 import { PlayIcon } from "../../components/SVGs/SVGicons";
 import Player from "../../components/Player";
 import { albums, musics } from "../../constants/musics";
+import useResponsive from "../../hooks/useResponsiveness";
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -14,6 +15,8 @@ interface MusicProps {
 const Music: FunctionComponent<MusicProps> = (): ReactElement => {
 
     const [showAlbumMusics, setShowAlbumMusics] = useState(false);
+
+    const onMobile = useResponsive();
 
     return (
         <div className={styles.musicPage}>
@@ -41,7 +44,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             </div>
                         </div>
                     </div>)} */}
-                {albums.map((eachAlbum, index) =>
+                {onMobile && albums.map((eachAlbum, index) =>
                     <div className={styles.eachAlbum} key={index}>
                         <div className={styles.eachAlbum__title}>
                             <h2>{eachAlbum.albumName}</h2>
