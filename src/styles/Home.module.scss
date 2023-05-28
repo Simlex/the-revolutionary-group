@@ -500,9 +500,11 @@
 			// border: 1px solid #fff;
 			padding: 16px;
 			width: 100%;
+			height: 500px;
 			max-width: 400px;
 			margin: 0 auto;
 			display: inline-flex;
+			position: relative;
 			@include tablet {
 				// min-height: calc(100vh - 81px - 57.3px);
 				max-height: auto;
