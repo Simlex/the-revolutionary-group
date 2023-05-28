@@ -515,6 +515,29 @@
 		}
 	}
 
+	.gallerySection {
+		@extend .heroContainer;
+		flex-direction: column;
+		padding-top: 48px;
+		gap: 32px;
+		@include tablet {
+			padding-top: 0px;
+			margin-top: 48px;
+			min-height: calc(100vh - 81px);
+		}
+
+		.content {
+			display: flex;
+			align-items: center;
+			&__image {
+				height: 140px;
+				width: 100px;
+				border: 1px solid #000;
+				position: relative;
+			}
+		}
+	}
+
 	.aboutSection {
 		@extend .heroContainer;
 		flex-direction: column;

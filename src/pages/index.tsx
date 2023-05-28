@@ -115,6 +115,17 @@ export default function Home() {
           <EventSection /> 
         </div>
 
+        {/* <div className={styles.gallerySection}>
+          <div className={styles.topArea}>
+            <h3>Gallery</h3>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.content__image}>
+              <Image src={images.AndrewSitting} alt='event' fill />
+            </div>
+          </div>
+        </div> */}
+
         <div className={styles.aboutSection}>
           <div className={styles.topArea}>
             <h3>About Minister Andrew</h3>
