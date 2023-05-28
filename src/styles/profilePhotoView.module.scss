@@ -1,0 +1,98 @@
+@use './variables.scss' as var;
+// @import './reuseables';
+
+.previewContainer {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    scale: 1;
+    opacity: 1;
+    animation: zoomContainer 300ms ease;
+
+    @keyframes zoomContainer {
+        from {
+            scale: 0.8;
+            opacity: 0;
+        }
+    }
+    
+    .overlay {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 90;
+        opacity: 1;
+        animation: zoomOverlay 300ms ease;
+    
+        @keyframes zoomOverlay {
+            from {
+                opacity: 0;
+            }
+        }
+    }
+
+    .previewArea {
+        // width: 300px;
+        // height: 300px;
+        // z-index: 95;
+        width: 80%;
+        height: 80%;
+        z-index: 95;
+        @media screen and (max-width: 680px) {
+            height: 60%;
+        } 
+        .photo {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            // border-radius: 100%;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        .photoNotAvailable {
+            @extend .photo;
+            opacity: 1;
+            position: relative;
+
+            .message {
+                position: absolute;
+                color: #000000;
+                font-weight: 500;
+            }
+        }
+        button {
+            padding: 6px 18px;
+            font-size: 14px;
+            // border: 0;
+            border: 1px solid #fff;
+            color: #fff;
+            background-color: #787878;
+            border-radius: 20px;
+            display: flex;
+            margin: 0 auto;
+            margin-top: 32px;
+            cursor: pointer;
+            &:hover {
+                background-color: #F26528; 
+                border: 0;
+            }
+        }
+    }
+}
+
+.previewContainerClose {
+    @extend .previewContainer;
+    display: none;
+}

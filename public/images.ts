@@ -1,7 +1,7 @@
 // import logo from "./images/logo.png";
 // import andrew from "./images/andrew.jpg";
 // import He_Has_Done_It_All_Cover from "./images/He_Has_Done_It_All_Cover.jpg";
-// import scroll_down from "./images/scroll_down.svg";
+import scroll_down from "./images/scroll_down.svg";
 // import musicBg from "./images/music_bg.svg";
 // import AndrewStanding1 from "./images/Andrew_Standing_1.jpg"; 
 // import AndrewStanding2 from "./images/Andrew_Standing_2.jpg";
@@ -15,7 +15,7 @@
 const logo = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169918/The%20revelatory%20generation/images/logo_dt99r4.png";
 const andrew = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169935/The%20revelatory%20generation/images/andrew_srlfbc.jpg";
 const He_Has_Done_It_All_Cover = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169964/The%20revelatory%20generation/images/He_Has_Done_It_All_Cover_zsby6b.jpg";
-const scroll_down = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169924/The%20revelatory%20generation/images/scroll_down_khwnzr.svg";
+// const scroll_down = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169924/The%20revelatory%20generation/images/scroll_down_khwnzr.svg";
 const musicBg = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169927/The%20revelatory%20generation/images/music_bg_sgch7i.svg";
 const AndrewStanding1 = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169945/The%20revelatory%20generation/images/Andrew_Standing_1_s7h0fl.jpg"; 
 const AndrewStanding2 = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169964/The%20revelatory%20generation/images/Andrew_Standing_2_t2cugc.jpg";

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.scss'
 import images from '../../public/images'
+import { images as galleryImages } from '../../constants/gallery'
 import { FacebookIcon, InstagramIcon, MailIcon, PauseIcon, PlayIcon, ScrollDownArrowIcon, TwitterIcon, YoutubeIcon } from '../../components/SVGs/SVGicons'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -10,6 +11,7 @@ import { musics } from '../../constants/musics'
 import EventSection from '../../components/EventsSection'
 import { motion } from 'framer-motion';
 import MobileFooter from '../../components/MobileFooter'
+import ProfilePhotoView from '../../components/ProfilePhotoView'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -25,6 +27,16 @@ export default function Home() {
 
   const musicSectionRef = useRef<HTMLDivElement>(null);
 
+  // State for profile photo view visibility
+  const [photoPreview, setPhotoPreview] = useState(false);
+
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>();
+
+  function showPhotoModal(imageSelected: string) {
+    setSelectedGalleryImage(imageSelected)
+    selectedGalleryImage && setPhotoPreview(true);    
+  }; 
+ 
   // const futureDate = new Date('2023-07-29T00:00:00');
 
   // const calculateTimeLeft = (): TimeLeft => {
@@ -73,6 +85,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <ProfilePhotoView
+        image={selectedGalleryImage}
+        photoPreview={photoPreview}
+        setPhotoPreview={setPhotoPreview} />
+
       <div className={styles.homepageBody}>
 
         <div className={styles.heroContainer}>
@@ -96,35 +113,50 @@ export default function Home() {
               <Link href='/about'>
                 <button>Read about Andrew</button>
               </Link>
-              <Link href='/music'> 
-                <button>View musics</button>      
-              </Link>  
-                {/* <button onClick={() => musicSectionRef.current?.scrollTo({top: 0})}> View musics</button>       */}
-            </div>  
+              <Link href='/music'>
+                <button>View musics</button>
+              </Link>
+              {/* <button onClick={() => musicSectionRef.current?.scrollTo({top: 0})}> View musics</button>       */}
+            </div>
           </motion.div>
           {/* <ScrollLink to="musicSection" smooth={true} duration={500} offset={0}> */}
           <div className={styles.scrollNext}
             onClick={() => musicSectionRef.current?.scrollIntoView({ behavior: "smooth" })}>
-            <Image src={images.scroll_down} alt='scroll' fill />
+            <Image src={images.scroll_down} alt='scroll' />
             <ScrollDownArrowIcon />
           </div>
           {/* </ScrollLink> */}
         </div>
 
         <div ref={musicSectionRef}>
-          <EventSection /> 
+          <EventSection />
         </div>
 
-        {/* <div className={styles.gallerySection}>
+        <div className={styles.gallerySection}>
           <div className={styles.topArea}>
             <h3>Gallery</h3>
           </div>
+
           <div className={styles.content}>
+            {
+              galleryImages.map((eachImage, index) => (
+                <div className={styles.content__image} key={index}>
+                  <Image src={eachImage.image} alt='event' fill
+                    onClick={(e) => showPhotoModal(eachImage.image)} />
+                </div>
+              ))
+            }
+            {/* <div className={styles.content__image}>
+              <Image src={images.AndrewSitting} alt='event' fill />
+            </div>
             <div className={styles.content__image}>
               <Image src={images.AndrewSitting} alt='event' fill />
             </div>
+            <div className={styles.content__image}>
+              <Image src={images.AndrewSitting} alt='event' fill />
+            </div> */}
           </div>
-        </div> */}
+        </div>
 
         <div className={styles.aboutSection}>
           <div className={styles.topArea}>

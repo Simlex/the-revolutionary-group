@@ -518,22 +518,43 @@
 	.gallerySection {
 		@extend .heroContainer;
 		flex-direction: column;
-		padding-top: 48px;
+		padding-top: 48px + 24px;
+		padding-bottom: 48px;
 		gap: 32px;
+		min-height: auto;
 		@include tablet {
 			padding-top: 0px;
 			margin-top: 48px;
-			min-height: calc(100vh - 81px);
+			// min-height: calc(100vh - 81px);
 		}
 
 		.content {
 			display: flex;
 			align-items: center;
+			gap: 16px;
+			// border: 1px solid #000;
+			width: 95%;
+			overflow-x: auto;
+			padding-bottom: 4px;
+			scroll-snap-type: x proximity;
+			@include scrollArea;
+			&::-webkit-scrollbar {
+				height: 4px;
+			}
+
 			&__image {
-				height: 140px;
-				width: 100px;
-				border: 1px solid #000;
+				height: 240px;
+				width: 300px;
+				min-width: 300px;
+				// border: 1px solid #000;
+				border-radius: 12px;
+				overflow: hidden;
 				position: relative;
+				scroll-snap-align: center;
+				cursor: pointer;
+				img {
+					object-fit: cover;
+				}
 			}
 		}
 	}
