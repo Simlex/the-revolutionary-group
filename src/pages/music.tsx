@@ -57,24 +57,20 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             </div>
                             <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>
                         </motion.div>
-                        {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
+                        {/* {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
                             return (
                                 <motion.div className={styles.eachAlbum__music} key={index}
                                     initial={{ opacity: 0, scale: 0.9, y: 80 }}
                                     whileInView={{ opacity: 1, scale: 1, y: 0 }}
                                     transition={{ duration: 0.2, ease: 'linear' }}>
                                     <span>{eachMusic.name}</span>
-                                    {/* <h3>{eachMusic.year}</h3> */}
-                                    {/* <p>{eachMusic.genre}</p> */}
                                     <div className={styles.cta}>
                                         <Player src={eachMusic.path} />
                                         <a href={eachMusic.path} download={eachMusic.music}>Download audio</a>
                                     </div>
-                                    {/* <div className={styles.socials}>
-                                    </div> */}
                                 </motion.div>
                             )
-                        })}
+                        })} */}
                     </div>)}
                 {musics.map((eachMusic, index) =>
                     <motion.div className={styles.eachMusic} key={index}
