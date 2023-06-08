@@ -55,7 +55,8 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <div className={styles.image}>
                                 <Image src={images.Amen_Album_Cover} alt="Album cover" fill />
                             </div>
-                            <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>
+                            <button className={styles.musicToggle} >{`This Album - ${eachAlbum.albumName} would be available for preview and download starting from the 29th of July`}</button>
+                            {/* <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button> */}
                         </motion.div>
                         {/* {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
                             return (
