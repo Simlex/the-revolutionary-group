@@ -1,0 +1,71 @@
+@import "./variables.scss";
+@import "./reuseables";
+
+.contactPageBody {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+    padding: $section-padding-desktop;
+    min-height: calc(100vh - 81px - 57.3px);
+    max-height: calc(100vh - 81px - 57.3px);
+    position: relative;
+    @include tablet {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: $section-padding-mobile;
+        padding-top: 96px;
+        padding-bottom: 96px;
+        min-height: none;
+        max-height: none;
+    }
+
+    .imageArea {
+        .image {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            border-radius: 100%;
+            overflow: hidden;
+            @include tablet {
+                height: 250px;
+                width: 250px;
+            }
+            img {
+                object-fit: cover;
+            }
+        }
+    }
+    .content {
+        flex-basis: 50%;
+        h2 {
+            margin-bottom: 24px;
+        }
+        &__socialMediaList {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            .socialMedia {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                width: fit-content;
+                &:hover {
+                    transform: translateX(8px);
+                    color: $primary-color;
+                }
+                span {
+                    display: inline-flex;
+                    svg {
+                        width: 30px;
+                        height: 30px;
+                        path {
+                            fill: $primary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

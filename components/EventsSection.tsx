@@ -181,6 +181,27 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                         <motion.iframe
                             width='100%'
                             height='100%'
+                            src="https://www.youtube.com/embed/6nakg7IWRgA"
+                            title="He's done it all"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                        </motion.iframe>
+                        <motion.video
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}
+                            // src="/videos/live_program.mp4"
+                            src="https://res.cloudinary.com/dxwpajciu/video/upload/v1686411732/The%20revelatory%20generation/videos/video_2023-06-10_16-26-48_er5ovg.mp4"
+                            typeof="video/mp4"
+                            controls>
+                        </motion.video>
+                        <motion.iframe
+                            width='100%'
+                            height='100%'
                             src="https://www.youtube.com/embed/Fz6KwG7fo4k"
                             title="He's done it all"
                             frameBorder={0}
