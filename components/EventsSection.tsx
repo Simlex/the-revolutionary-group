@@ -181,6 +181,18 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                         <motion.iframe
                             width='100%'
                             height='100%'
+                            src="https://www.youtube.com/embed/hG66tC_PfgQ"
+                            title="He's done it all"
+                            frameBorder={0}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            initial={{ opacity: 0, scale: 0.9, y: 80 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.2, ease: 'linear' }}>
+                        </motion.iframe>
+                        <motion.iframe
+                            width='100%'
+                            height='100%'
                             src="https://www.youtube.com/embed/6nakg7IWRgA"
                             title="He's done it all"
                             frameBorder={0}

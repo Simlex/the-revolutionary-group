@@ -4,13 +4,17 @@ import Image from "next/image";
 import images from "../public/images";
 import styles from '../src/styles/Footer.module.scss';
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, MailIcon, TwitterIcon, YoutubeIcon } from "./SVGs/SVGicons";
+import { FacebookIcon, InstagramIcon, MailIcon, TikTokIcon, TwitterIcon, YoutubeIcon } from "./SVGs/SVGicons";
+import { scrollWindow } from "../constants/ScrollWindow";
+import { useRouter } from "next/router";
 
 interface MobileFooterProps {
 
 }
 
 const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
+
+
     return (
         <motion.div className={styles.footerSection}
             initial={{ opacity: 1, scale: 1, y: 30 }}
@@ -23,23 +27,23 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
             </Link>
             <div className={styles.footerSection__quickLinks}>
                 <h3>Quick links</h3>
-                <ul className={styles.links}>
+                <ul className={styles.links}> 
                     <Link href='/'>
-                        <li>Home</li>
-                    </Link>
-                    <Link href='/music'>
+                        <li>Home</li>     
+                    </Link> 
+                    <Link href='/music'>  
                         <li>Musics</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/contact'>
                         <li>Contact</li>
                     </Link>
-                    <Link href='/'>
+                    <Link href='/about'>
                         <li>About</li>
                     </Link>
                 </ul>
             </div>
             <div className={styles.footerSection__socials}>
-                <Link href='/' target='_blank'>
+                <Link href='https://facebook.com/gracefulandrew' target='_blank'>
                     <span><FacebookIcon /></span>
                 </Link>
                 <Link href='https://instagram.com/gracefulandrew?igshid=YmMyMTA2M2Y=' target='_blank'>
@@ -48,10 +52,13 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
                 <Link href='https://youtube.com/@Gracefulandrew' target='_blank'>
                     <span><YoutubeIcon /></span>
                 </Link>
-                <Link href='/' target='_blank'>
+                <Link href='https://twitter.com/gadpraiseandrew' target='_blank'>
                     <span><TwitterIcon /></span>
                 </Link>
-                <Link href='/' target='_blank'>
+                <Link href='https://tiktok.com/@gracefulandrew' target='_blank'>
+                    <span><TikTokIcon /></span>
+                </Link>
+                <Link href='mailto:gadpraise@gmail.com' target='_blank'>
                     <span><MailIcon /></span>
                 </Link>
             </div>

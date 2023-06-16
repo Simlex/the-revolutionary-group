@@ -12,6 +12,7 @@ import EventSection from '../../components/EventsSection'
 import { motion } from 'framer-motion';
 import MobileFooter from '../../components/MobileFooter'
 import ProfilePhotoView from '../../components/ProfilePhotoView'
+import { useRouter } from 'next/router'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -25,7 +26,11 @@ interface TimeLeft {
 
 export default function Home() {
 
+  const router = useRouter();
+
   const musicSectionRef = useRef<HTMLDivElement>(null);
+
+  const homepageBodyRef = useRef<HTMLDivElement>(null); 
 
   // State for profile photo view visibility
   const [photoPreview, setPhotoPreview] = useState(false);
@@ -36,6 +41,12 @@ export default function Home() {
     setSelectedGalleryImage(imageSelected)
     selectedGalleryImage && setPhotoPreview(true);    
   }; 
+
+  useEffect(() => {
+    if(router.isReady) {
+      homepageBodyRef.current?.scrollIntoView({ behavior: "auto" });
+    }
+  }, [router.isReady]);
  
   // const futureDate = new Date('2023-07-29T00:00:00');
 
@@ -90,7 +101,7 @@ export default function Home() {
         photoPreview={photoPreview}
         setPhotoPreview={setPhotoPreview} />
 
-      <div className={styles.homepageBody}>
+      <div className={styles.homepageBody} ref={homepageBodyRef}>
 
         <div className={styles.heroContainer}>
           <div className={styles.imageContainer}>

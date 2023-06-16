@@ -1,15 +1,27 @@
-import { FunctionComponent, ReactElement } from "react";
+import { FunctionComponent, ReactElement, useEffect, useRef } from "react";
 import styles from "../styles/About.module.scss";
 import Image from "next/image";
 import images from "../../public/images";
+import { useRouter } from "next/router";
 
 interface AboutProps {
 
 }
 
 const About: FunctionComponent<AboutProps> = (): ReactElement => {
+    
+    const router = useRouter(); 
+
+    const aboutpageBodyRef = useRef<HTMLDivElement>(null);
+ 
+    useEffect(() => {
+      if(router.isReady) {
+        aboutpageBodyRef.current?.scrollIntoView({ behavior: "auto" });
+      }
+    }, [router.isReady]); 
+
     return (
-        <div className={styles.aboutPageBody}>
+        <div className={styles.aboutPageBody} ref={aboutpageBodyRef}> 
             <div className={styles.lhs}>
                 <h3>About Andrew Godwin</h3>
                 <div className={styles.lhs__bodyContent}>

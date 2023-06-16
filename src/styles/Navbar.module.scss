@@ -65,6 +65,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    background-color: $grey-bg;
+    z-index: 40;
+    // border: 3px solid #000;
 
     &__logo {
         width: 48px;

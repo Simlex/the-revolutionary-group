@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactElement, useState } from "react";
+import { FunctionComponent, ReactElement, useEffect, useRef, useState } from "react";
 import styles from '../styles/Music.module.scss';
 import Image from "next/image";
 import images from "../../public/images";
@@ -7,6 +7,7 @@ import Player from "../../components/Player";
 import { albums, musics } from "../../constants/musics";
 import useResponsive from "../../hooks/useResponsiveness";
 import { motion } from 'framer-motion';
+import { useRouter } from "next/router";
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -15,12 +16,34 @@ interface MusicProps {
 
 const Music: FunctionComponent<MusicProps> = (): ReactElement => {
 
+    const router = useRouter(); 
+
+    const musicpageBodyRef = useRef<HTMLDivElement>(null);
+
     const [showAlbumMusics, setShowAlbumMusics] = useState(false);
+
+    // Get today's date
+    var today = new Date();
+
+    // Create a target date for comparison (29th July 2023)
+    var targetDate = new Date(2023, 6, 29); // Note: Months are zero-based (0 = January, 6 = July)
+
+    const [isLaunchDate, setIsLaunchDate] = useState(today >= targetDate);
+
+    useEffect(() => {
+        setIsLaunchDate(today >= targetDate);
+    }, []);
 
     const onMobile = useResponsive();
 
+    useEffect(() => {
+      if(router.isReady) {
+        musicpageBodyRef.current?.scrollIntoView({ behavior: "auto" });
+      }
+    }, [router.isReady]);
+
     return (
-        <div className={styles.musicPage}>
+        <div className={styles.musicPage} ref={musicpageBodyRef}>
             <div className={styles.topPageArea}>
                 <div className={styles.topPageArea__image}>
                     <Image src={images.musicBg} alt="background" fill />
@@ -55,10 +78,10 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <div className={styles.image}>
                                 <Image src={images.Amen_Album_Cover} alt="Album cover" fill />
                             </div>
-                            <button className={styles.musicToggle} >{`This Album - ${eachAlbum.albumName} would be available for preview and download starting from the 29th of July`}</button>
-                            {/* <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button> */}
+                            {!isLaunchDate ? <button className={styles.musicToggle} >{`${eachAlbum.albumName} would be available for preview and download starting from the 29th of July`}</button> :
+                            <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>}
                         </motion.div>
-                        {/* {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
+                        {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
                             return (
                                 <motion.div className={styles.eachAlbum__music} key={index}
                                     initial={{ opacity: 0, scale: 0.9, y: 80 }}
@@ -71,7 +94,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                                     </div>
                                 </motion.div>
                             )
-                        })} */}
+                        })}
                     </div>)}
                 {musics.map((eachMusic, index) =>
                     <motion.div className={styles.eachMusic} key={index}
