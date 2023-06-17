@@ -63,7 +63,7 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                         <Link href='/contact' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/contact' ? styles.active : ''}>Contact me</li>
                                         </Link>
-                                        <button>Donate</button>
+                                        {/* <button>Donate</button> */}
                                     </div>
                                 </div>
                             </div>}
@@ -100,7 +100,7 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                 <button onClick={() => setBookingPanelVisibility(true)}>Contact me</button>
                             </div>
                         </Link>
-                        <button>Donate</button>
+                        {/* <button>Donate</button> */}
                     </div>
             }
         </>

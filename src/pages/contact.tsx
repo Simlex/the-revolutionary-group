@@ -30,7 +30,7 @@ const Contact: FunctionComponent<ContactProps> = (): ReactElement => {
                 </div>
             </div>
             <div className={styles.content}>
-                <h2>For all booking inquiries, event invitations, or media-related requests, please don't hesitate to contact me. I value your interest and support.</h2>
+                <h2>For all booking inquiries, event invitations, or media-related requests, please don&apos;t hesitate to contact me. I value your interest and support.</h2>
 
                 <div className={styles.content__socialMediaList}>
                     <Link href='https://facebook.com/gracefulandrew' target='_blank'>
