@@ -4,12 +4,14 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import styles from '../src/styles/Layout.module.scss'
 import MobileFooter from "./MobileFooter";
+import { PageProps } from "../models/PageProps";
 
 interface LayoutProps {
     children?: React.ReactNode;
+    props: PageProps
 }
 
-const Layout: FunctionComponent<LayoutProps> = ({ children }): ReactElement => {
+const Layout: FunctionComponent<LayoutProps> = ({ children, props: pageProps }): ReactElement => {
     return (
         <>
             <Head>
@@ -18,7 +20,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }): ReactElement => {
                     href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&display=swap"
                 />
             </Head>
-            <Navbar />
+            <Navbar props={pageProps} />
             <div className={styles.innerPage}>
                 {children}
                 <MobileFooter />

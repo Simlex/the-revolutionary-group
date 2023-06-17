@@ -6,12 +6,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useResponsive from "../hooks/useResponsiveness";
 import { ArrowIcon, CloseMenuIcon, HamburgerMenuIcon } from "./SVGs/SVGicons";
+import { PageProps } from "../models/PageProps";
 
 interface NavbarProps {
-
+    props: PageProps
 }
 
-const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
+const Navbar: FunctionComponent<NavbarProps> = ({ props: { isDonationPopupVisible, setIsDonationPopupVisible } }): ReactElement => {
 
     const [bookingPanelVisibility, setBookingPanelVisibility] = useState(true);
 
@@ -63,7 +64,10 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                         <Link href='/contact' onClick={() => setIsNavOpen(false)}>
                                             <li className={route.pathname == '/contact' ? styles.active : ''}>Contact me</li>
                                         </Link>
-                                        {/* <button>Donate</button> */}
+                                        <button onClick={() => {
+                                            setIsNavOpen(false)
+                                            setIsDonationPopupVisible(true)
+                                        }}>Donate</button>
                                     </div>
                                 </div>
                             </div>}
@@ -71,10 +75,10 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                     :
                     <div className={`${styles.navbar} ${styles.container}`}>
                         {/* <div className={styles.logo}>
-                <Link href='/'>
-                    <Image src={images.logo} alt="Logo" />
-                </Link>
-            </div> */}
+                            <Link href='/'>
+                                <Image src={images.logo} alt="Logo" />
+                            </Link>
+                        </div> */}
                         <ul className={styles.navLinks}>
                             <Link href='/'>
                                 <li className={route.pathname == '/' ? styles.active : ''}>Home</li>
@@ -95,12 +99,17 @@ const Navbar: FunctionComponent<NavbarProps> = (): ReactElement => {
                                 <li className={route.pathname == '/contact' ? styles.active : ''}>Contact me</li>
                             </Link> */}
                         </ul>
-                        <Link href='/contact'>
-                            <div className={styles.cta}>
-                                <button onClick={() => setBookingPanelVisibility(true)}>Contact me</button>
-                            </div>
-                        </Link>
-                        {/* <button>Donate</button> */}
+                        <div className={styles.lhs}>
+                            <Link href='/contact'>
+                                <div className={styles.cta}>
+                                    <button onClick={() => setBookingPanelVisibility(true)}>Contact me</button>
+                                </div>
+                            </Link>
+                            <button onClick={() => {
+                                setIsNavOpen(false)
+                                setIsDonationPopupVisible(true)
+                            }}>Donate</button>
+                        </div>
                     </div>
             }
         </>

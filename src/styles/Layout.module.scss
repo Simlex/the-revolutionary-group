@@ -7,8 +7,10 @@
 	border-right: none;
 	border-bottom: none;
 	margin-left: 64px;
-	max-height: calc(100vh - 81px);
-	height: calc(100vh - 81px);
+	max-height: 100vh;
+	height: 100vh;
+	// max-height: calc(100vh - 81px);
+	// height: calc(100vh - 81px);
 	padding-bottom: 58px;
 	overflow-y: auto;
 	background-color: $grey-bg;

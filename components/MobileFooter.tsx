@@ -9,7 +9,6 @@ import { scrollWindow } from "../constants/ScrollWindow";
 import { useRouter } from "next/router";
 
 interface MobileFooterProps {
-
 }
 
 const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {

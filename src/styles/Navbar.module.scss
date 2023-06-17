@@ -52,6 +52,14 @@
         }
     }
 
+    .lhs {
+        display: flex;
+        gap: 12px;
+        button {
+            @include small-button;
+        }
+    }
+
     .cta {
         button {
             @include small-button;
@@ -194,6 +202,10 @@
                 button {
                     @include big-button;
                 }
+            }
+            button {
+                @include big-button;
+                margin: 0 auto;
             }
         }
     }

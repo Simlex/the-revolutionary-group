@@ -8,21 +8,31 @@ import Image from 'next/image';
 import images from '../../public/images';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import '../styles/NProgress.css'; 
-import { Router } from 'next/router';  
+import '../styles/NProgress.css';
+import { Router } from 'next/router';
+import DonationModal from '../../components/Modal/DonationModal';
+import { PageProps } from '../../models/PageProps';
 
 
 //Route Events. 
-Router.events.on('routeChangeStart', () => NProgress.start()); 
+Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 NProgress.configure({ showSpinner: true });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: { ...pageProps } }: AppProps) {
 
   const [isWelcomeScreenVisible, setIsWelcomeScreenVisible] = useState(true);
   const [isWelcomeScreenStyle, setIsWelcomeScreenStyle] = useState(true);
+
+  const [isDonationPopupVisible, setIsDonationPopupVisible] = useState(false);
+
+
+  pageProps = {
+    isDonationPopupVisible: isDonationPopupVisible,
+    setIsDonationPopupVisible: setIsDonationPopupVisible
+  } 
 
   useEffect(() => {
     if (!isWelcomeScreenStyle) {
@@ -30,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         setIsWelcomeScreenVisible(false);
       }, 500);
     }
-  }, [isWelcomeScreenStyle])
+  }, [isWelcomeScreenStyle]);
 
   return (
     <>
@@ -45,7 +55,8 @@ export default function App({ Component, pageProps }: AppProps) {
             <button onClick={() => setIsWelcomeScreenStyle(false)}>Continue to site</button>
           </div>
           :
-          <Layout>
+          <Layout props={pageProps as PageProps}>
+            {isDonationPopupVisible && <DonationModal visibility={isDonationPopupVisible} setVisibility={setIsDonationPopupVisible} />}
             <Component {...pageProps} />
           </Layout>
       }

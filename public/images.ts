@@ -17,6 +17,7 @@ const andrew = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169935/Th
 const He_Has_Done_It_All_Cover = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169964/The%20revelatory%20generation/images/He_Has_Done_It_All_Cover_zsby6b.jpg";
 // const scroll_down = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169924/The%20revelatory%20generation/images/scroll_down_khwnzr.svg";
 const musicBg = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169927/The%20revelatory%20generation/images/music_bg_sgch7i.svg";
+const donation = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686989211/The%20revelatory%20generation/images/donation_j69z0z.jpg";
 const AndrewStanding1 = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169945/The%20revelatory%20generation/images/Andrew_Standing_1_s7h0fl.jpg"; 
 const AndrewStanding2 = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169964/The%20revelatory%20generation/images/Andrew_Standing_2_t2cugc.jpg";
 const AndrewStanding3 = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169913/The%20revelatory%20generation/images/Andrew_Standing_3_gpvwam.jpg";
@@ -26,6 +27,8 @@ const AndrewSitting = "https://res.cloudinary.com/dxwpajciu/image/upload/v168516
 const Great_God_Cover = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169986/The%20revelatory%20generation/images/Great_God_Cover_fyszld.jpg";
 const Amen_Album_Cover = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169953/The%20revelatory%20generation/images/amen_album_cover_mpxpmb.jpg";
 const Album_Launch_Flyer = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169934/The%20revelatory%20generation/images/album_launch_graphics_oyl9n5.jpg";
+const zelle = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686992799/The%20revelatory%20generation/images/account%20logos/zelle_geeb5v.png";
+const cashapp = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686992799/The%20revelatory%20generation/images/account%20logos/cashapp_vkcxcd.png"; 
 
 
 // import spotify from "./images/spotify.jpg";
@@ -47,5 +50,8 @@ export default {
   AndrewSitting,
   Great_God_Cover,
   Album_Launch_Flyer,
-  Amen_Album_Cover
+  Amen_Album_Cover,
+  donation,
+  zelle,
+  cashapp
 };
