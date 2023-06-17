@@ -6,13 +6,14 @@ import images from '../../public/images'
 import { images as galleryImages } from '../../constants/gallery'
 import { FacebookIcon, InstagramIcon, MailIcon, PauseIcon, PlayIcon, ScrollDownArrowIcon, TwitterIcon, YoutubeIcon } from '../../components/SVGs/SVGicons'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { FunctionComponent, ReactElement, useEffect, useRef, useState } from 'react'
 import { musics } from '../../constants/musics'
 import EventSection from '../../components/EventsSection'
 import { motion } from 'framer-motion';
 import MobileFooter from '../../components/MobileFooter'
 import ProfilePhotoView from '../../components/ProfilePhotoView'
 import { useRouter } from 'next/router'
+import { PageProps } from '../../models/PageProps'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -24,13 +25,16 @@ interface TimeLeft {
   seconds: number;
 }
 
-export default function Home() {
+// const Home: NextPage<PageProps> = ({ airports }: PageProps) => {
+const Home: FunctionComponent<PageProps> = ({ isDonationPopupVisible, setIsDonationPopupVisible }): ReactElement => {
+
+// export default function Home() {
 
   const router = useRouter();
 
   const musicSectionRef = useRef<HTMLDivElement>(null);
 
-  const homepageBodyRef = useRef<HTMLDivElement>(null); 
+  const homepageBodyRef = useRef<HTMLDivElement>(null);
 
   // State for profile photo view visibility
   const [photoPreview, setPhotoPreview] = useState(false);
@@ -39,15 +43,15 @@ export default function Home() {
 
   function showPhotoModal(imageSelected: string) {
     setSelectedGalleryImage(imageSelected)
-    selectedGalleryImage && setPhotoPreview(true);    
-  }; 
+    selectedGalleryImage && setPhotoPreview(true);
+  };
 
   useEffect(() => {
-    if(router.isReady) {
+    if (router.isReady) {
       homepageBodyRef.current?.scrollIntoView({ behavior: "auto" });
     }
   }, [router.isReady]);
- 
+
   // const futureDate = new Date('2023-07-29T00:00:00');
 
   // const calculateTimeLeft = (): TimeLeft => {
@@ -169,6 +173,25 @@ export default function Home() {
           </div>
         </div>
 
+        <div className={styles.donateSection}>
+          <div className={styles.donateSection__image}>
+            <Image src={images.donationTag} fill alt='Donation tag' />
+          </div>
+          <div className={styles.topArea}>
+            <h3>Support My Gospel Music Ministry</h3>
+          </div>
+          <div className={styles.textContent}>
+            <p>Your generosity can make a significant impact in this
+              ministry. By donating to our cause, you play an integral
+              role in spreading the transformative power of worship
+              through melodies and lyrics that glorify God.
+              Your contribution helps us create meaningful songs,
+              produce high-quality music, and reach a wider audience
+              with the message of God&apos;s love and grace.</p>
+            <button onClick={() => setIsDonationPopupVisible(true)}>Donate</button>
+          </div>
+        </div>
+
         <div className={styles.aboutSection}>
           <div className={styles.topArea}>
             <h3>About Minister Andrew</h3>
@@ -231,3 +254,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home;

@@ -29,6 +29,7 @@ const Amen_Album_Cover = "https://res.cloudinary.com/dxwpajciu/image/upload/v168
 const Album_Launch_Flyer = "https://res.cloudinary.com/dxwpajciu/image/upload/v1685169934/The%20revelatory%20generation/images/album_launch_graphics_oyl9n5.jpg";
 const zelle = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686992799/The%20revelatory%20generation/images/account%20logos/zelle_geeb5v.png";
 const cashapp = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686992799/The%20revelatory%20generation/images/account%20logos/cashapp_vkcxcd.png"; 
+const donationTag = "https://res.cloudinary.com/dxwpajciu/image/upload/v1686997997/The%20revelatory%20generation/images/donate_tag_aeonge.png"; 
 
 
 // import spotify from "./images/spotify.jpg";
@@ -53,5 +54,6 @@ export default {
   Amen_Album_Cover,
   donation,
   zelle,
-  cashapp
+  cashapp,
+  donationTag
 };

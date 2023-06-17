@@ -561,6 +561,47 @@
 		}
 	}
 
+	.donateSection {
+		@extend .heroContainer;
+		position: relative;
+		overflow: hidden;
+		background-color: $white;
+		height: fit-content;
+		min-height: fit-content;
+		max-height: auto;
+		padding-top: 64px;
+		padding-bottom: 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		&__image {
+			width: 100%;
+			height: 200px;
+			position: absolute;
+			top: -18%;
+			left: -40%;
+			@include tablet {
+				top: -18%;
+				left: -36%;
+			}
+		}
+		text-align: center;
+		.topArea {
+			width: 60%;
+		}
+		.textContent {
+			p {
+				font-size: $font-size-16 - 1px;
+				line-height: $font-size-16 + 2px;
+				margin-bottom: 12px;
+			}
+			button {
+				@include medium-button;
+				margin: 0 auto;
+			}
+		}
+	}
+
 	.aboutSection {
 		@extend .heroContainer;
 		flex-direction: column;
