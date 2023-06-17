@@ -7,11 +7,13 @@ import Link from "next/link";
 import { FacebookIcon, InstagramIcon, MailIcon, TikTokIcon, TwitterIcon, YoutubeIcon } from "./SVGs/SVGicons";
 import { scrollWindow } from "../constants/ScrollWindow";
 import { useRouter } from "next/router";
+import { PageProps } from "../models/PageProps";
 
 interface MobileFooterProps {
+    props: PageProps
 }
 
-const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
+const MobileFooter: FunctionComponent<MobileFooterProps> = ({ props: { isDonationPopupVisible, setIsDonationPopupVisible } }): ReactElement => {
 
 
     return (
@@ -39,6 +41,7 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = (): ReactElement => {
                     <Link href='/about'>
                         <li>About</li>
                     </Link>
+                    <button onClick={() => setIsDonationPopupVisible(true)}>Donate</button>
                 </ul>
             </div>
             <div className={styles.footerSection__socials}>

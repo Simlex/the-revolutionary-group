@@ -133,3 +133,31 @@ img {
     height: 100%;
   }
 }
+
+
+.copied {
+  font-size: 12px;
+  // border: 1px solid #000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: copyAnim 1600ms linear 200ms 1;
+  @keyframes copyAnim {
+    0% {
+      opacity: 0;
+      transform: translateY(12px);
+      visibility: visible;
+    }
+    30% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+    }
+  }
+}

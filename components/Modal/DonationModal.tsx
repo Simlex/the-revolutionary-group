@@ -1,7 +1,7 @@
-import { Dispatch, FunctionComponent, ReactElement, SetStateAction, useContext, useEffect, useRef, useState } from "react";
+import { Dispatch, FunctionComponent, ReactElement, RefObject, SetStateAction, useContext, useEffect, useRef, useState } from "react";
 import styles from '../../src/styles/donationModal.module.scss';
 import modalStyle from '../../src/styles/modalStyle.module.scss';
-import { CloseMenuIcon } from "../SVGs/SVGicons";
+import { CloseMenuIcon, CopyIcon } from "../SVGs/SVGicons";
 import Image from "next/image";
 import images from "../../public/images";
 
@@ -11,6 +11,42 @@ interface DonationModalProps {
 }
 
 const DonationModal: FunctionComponent<DonationModalProps> = ({ visibility, setVisibility }): ReactElement => {
+
+    const [accountIsCopied, setAccountIsCopied] = useState(false);
+
+    const zelleareaRef = useRef<HTMLParagraphElement>(null);
+    const cashappareaRef = useRef<HTMLParagraphElement>(null);
+
+    function copyItem(textareaRef: RefObject<HTMLParagraphElement>, stateNameFunction: Dispatch<SetStateAction<boolean>>) {
+
+        const element = textareaRef;
+
+        console.log(element);
+
+        // Create a temporary textarea element
+        const textarea = document.createElement('textarea');
+
+        // Set the value of the textarea to the text content of the element
+        textarea.value = element?.current?.textContent as string;
+
+        // Append the textarea to the document body
+        document.body.appendChild(textarea);
+
+        // Select the text within the textarea
+        textarea.select();
+
+        // Copy the selected text to the clipboard
+        document.execCommand('copy');
+
+        // Remove the temporary textarea
+        document.body.removeChild(textarea);
+
+        stateNameFunction(true);
+        setTimeout(() => {
+            stateNameFunction(false);
+        }, 1500);
+        // }
+    }
 
     return (
         <div className={visibility ? modalStyle.modalParent : modalStyle.modalParentInvisible}>
@@ -40,7 +76,10 @@ const DonationModal: FunctionComponent<DonationModalProps> = ({ visibility, setV
                             </div>
                             <div className={styles.account__accountInfo}>
                                 <p>gadpraise@gmail.com</p>
-                                {/* <span>Copy</span> */}
+                                {/* <span> */}
+                                    {/* Copy */}
+                                    {/* {accountIsCopied ? <CopyIcon clicked /> : <CopyIcon />} */}
+                                {/* </span> */}
                             </div>
                         </div>
                         <div className={styles.account}>
@@ -52,7 +91,10 @@ const DonationModal: FunctionComponent<DonationModalProps> = ({ visibility, setV
                             </div>
                             <div className={styles.account__accountInfo}>
                                 <p>$gadpraise1</p>
-                                {/* <span>Copy</span> */}
+                                {/* <span> */}
+                                    {/* Copy */}
+                                    {/* {accountIsCopied ? <CopyIcon clicked /> : <CopyIcon />} */}
+                                {/* </span> */}
                             </div>
                         </div>
                     </div>

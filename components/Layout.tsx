@@ -23,7 +23,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children, props: pageProps }):
             <Navbar props={pageProps} />
             <div className={styles.innerPage}>
                 {children}
-                <MobileFooter />
+                <MobileFooter props={pageProps} />
             </div>
             <Footer />
         </>

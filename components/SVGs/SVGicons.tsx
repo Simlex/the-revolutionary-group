@@ -380,3 +380,12 @@ export function ScrollDownArrowIcon({ width, height, className, fontSize, style,
     </svg>
   )
 };
+export function CopyIcon({ width, height, clicked }: any) {
+  return (
+    <>{clicked && <span className='copied'>Copied!</span>}
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.5 19H8.5C7.95 19 7.479 18.804 7.087 18.412C6.695 18.02 6.49934 17.5493 6.5 17V3C6.5 2.45 6.696 1.979 7.088 1.587C7.48 1.195 7.95067 0.999335 8.5 1H15.5L21.5 7V17C21.5 17.55 21.304 18.021 20.912 18.413C20.52 18.805 20.0493 19.0007 19.5 19ZM14.5 8V3H8.5V17H19.5V8H14.5ZM4.5 23C3.95 23 3.479 22.804 3.087 22.412C2.695 22.02 2.49934 21.5493 2.5 21V7H4.5V21H15.5V23H4.5Z" fill="white" />
+      </svg>
+    </>
+  )
+};
