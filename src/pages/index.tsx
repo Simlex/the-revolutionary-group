@@ -173,7 +173,7 @@ const Home: FunctionComponent<PageProps> = ({ isDonationPopupVisible, setIsDonat
           </div>
         </div>
 
-        <div className={styles.donateSection}>
+        {/* <div className={styles.donateSection}>
           <div className={styles.donateSection__image}>
             <Image src={images.donationTag} fill alt='Donation tag' />
           </div>
@@ -190,7 +190,7 @@ const Home: FunctionComponent<PageProps> = ({ isDonationPopupVisible, setIsDonat
               with the message of God&apos;s love and grace.</p>
             <button onClick={() => setIsDonationPopupVisible(true)}>Donate</button>
           </div>
-        </div>
+        </div> */}
 
         <div className={styles.aboutSection}>
           <div className={styles.topArea}>
