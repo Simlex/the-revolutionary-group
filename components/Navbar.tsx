@@ -67,7 +67,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ props: { isDonationPopupVisibl
                                         <button onClick={() => {
                                             setIsNavOpen(false)
                                             setIsDonationPopupVisible(true)
-                                        }}>Donate</button>
+                                        }}>Led to Give</button>
                                     </div>
                                 </div>
                             </div>}
@@ -108,7 +108,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ props: { isDonationPopupVisibl
                             <button onClick={() => {
                                 setIsNavOpen(false)
                                 setIsDonationPopupVisible(true)
-                            }}>Donate</button>
+                            }}>Led to Give</button>
                         </div>
                     </div>
             }

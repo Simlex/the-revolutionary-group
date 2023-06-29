@@ -41,7 +41,7 @@ const MobileFooter: FunctionComponent<MobileFooterProps> = ({ props: { isDonatio
                     <Link href='/about'>
                         <li>About</li>
                     </Link>
-                    <button onClick={() => setIsDonationPopupVisible(true)}>Donate</button>
+                    <button onClick={() => setIsDonationPopupVisible(true)}>Led to Give</button>
                 </ul>
             </div>
             <div className={styles.footerSection__socials}>
