@@ -24,7 +24,7 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
 
     const musicSectionRef = useRef<HTMLDivElement>(null);
 
-    const futureDate = new Date('2023-07-29T00:00:00');
+    const futureDate = new Date('2023-07-29T19:00:00');
 
     const calculateTimeLeft = (): TimeLeft => {
         const difference = +new Date(futureDate) - +new Date();

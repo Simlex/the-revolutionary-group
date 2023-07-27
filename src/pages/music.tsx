@@ -26,7 +26,7 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
     var today = new Date();
 
     // Create a target date for comparison (29th July 2023)
-    var targetDate = new Date(2023, 6, 29); // Note: Months are zero-based (0 = January, 6 = July)
+    var targetDate = new Date(2023, 6, 29, 19, 0); // Note: Months are zero-based (0 = January, 6 = July)
 
     const [isLaunchDate, setIsLaunchDate] = useState(today >= targetDate);
 
