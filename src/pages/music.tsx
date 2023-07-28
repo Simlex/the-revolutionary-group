@@ -8,6 +8,7 @@ import { albums, musics } from "../../constants/musics";
 import useResponsive from "../../hooks/useResponsiveness";
 import { motion } from 'framer-motion';
 import { useRouter } from "next/router";
+import Link from "next/link";
 // import DoneItAll from "../../public/musics/he_has_done_it_all.mp3";   
 
 interface MusicProps {
@@ -16,7 +17,7 @@ interface MusicProps {
 
 const Music: FunctionComponent<MusicProps> = (): ReactElement => {
 
-    const router = useRouter(); 
+    const router = useRouter();
 
     const musicpageBodyRef = useRef<HTMLDivElement>(null);
 
@@ -37,9 +38,9 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
     const onMobile = useResponsive();
 
     useEffect(() => {
-      if(router.isReady) {
-        musicpageBodyRef.current?.scrollIntoView({ behavior: "auto" });
-      }
+        if (router.isReady) {
+            musicpageBodyRef.current?.scrollIntoView({ behavior: "auto" });
+        }
     }, [router.isReady]);
 
     return (
@@ -78,8 +79,11 @@ const Music: FunctionComponent<MusicProps> = (): ReactElement => {
                             <div className={styles.image}>
                                 <Image src={images.Amen_Album_Cover} alt="Album cover" fill />
                             </div>
-                            {!isLaunchDate ? <button className={styles.musicToggle} >{`${eachAlbum.albumName} would be available for preview and download starting from the 29th of July`}</button> :
-                            <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>}
+                            <Link href='http://li.sten.to/amen-andrew-godwin'>
+                                <button className={styles.musicToggle}>Stream all musics</button>
+                            </Link>
+                            {/* {!isLaunchDate ? <button className={styles.musicToggle} >{`${eachAlbum.albumName} would be available for preview and download starting from the 29th of July`}</button> :
+                            <button className={styles.musicToggle} onClick={() => setShowAlbumMusics(!showAlbumMusics)}>{showAlbumMusics ? 'Close musics' : `See all musics under ${eachAlbum.albumName}`}</button>} */}
                         </motion.div>
                         {showAlbumMusics && eachAlbum.musics.map((eachMusic, index) => {
                             return (
