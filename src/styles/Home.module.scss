@@ -434,9 +434,12 @@
                     flex-direction: column;
                     .image {
 						min-width: 100%;
-						min-height: 140px;
+						min-height: 180px;
 						width: 100%;
-						height: 140px;
+						height: 180px;
+                        img {
+                            object-fit: cover;
+                        }
                     }
 					.musicInfo {
                         align-items: center;
