@@ -2,7 +2,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { FunctionComponent, ReactElement, RefObject, useEffect, useRef, useState } from "react";
 import styles from '../src/styles/Home.module.scss';
-import { musics } from "../constants/musics";
+import { albums, musics } from "../constants/musics";
 import images from "../public/images";
 import { PauseIcon, PlayIcon } from "./SVGs/SVGicons";
 import { motion } from 'framer-motion';
@@ -64,6 +64,9 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
 
     const [selectedMusic, setSelectedMusic] = useState<MusicModel>();
 
+
+    const isLaunchDate = timeLeft.days + timeLeft.hours + timeLeft.minutes + timeLeft.seconds == 0;
+
     return (
         <>
             <MusicInfoModal
@@ -79,56 +82,89 @@ const EventSection: FunctionComponent<EventSectionProps> = (): ReactElement => {
                 <span className={styles.blurredArea}></span>
                 <span className={styles.blurredArea}></span>
 
-                <div className={styles.eventAlertContainer}>
-                    <div className={styles.eventAlertContainer__topArea}>
-                        <h3>Upcoming Event</h3>
+                {!isLaunchDate &&
+                    <div className={styles.eventAlertContainer}>
+                        <div className={styles.eventAlertContainer__topArea}>
+                            <h3>Upcoming Event</h3>
+                        </div>
+                        <div className={styles.eventInfo}>
+                            <motion.div className={styles.eventInfo__lhs}
+                                initial={{ opacity: 0, scale: 1, y: 80 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ duration: 0.2, ease: 'linear' }}>
+                                <div className={styles.eventTitle}>
+                                    <span>DETAILS:</span>
+                                    <h1>Album launch</h1>
+                                </div>
+                                <div className={styles.eventDateInfo}>
+                                    <p>29th July, 2023</p>
+                                    <Link href='/events'>
+                                        <button>View more info</button>
+                                    </Link>
+                                </div>
+                            </motion.div>
+                            <motion.div className={styles.eventInfo__rhs}
+                                initial={{ opacity: 0, scale: 1, y: -80 }}
+                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                                transition={{ duration: 0.2, ease: 'linear' }}>
+                                <div className={styles.dateContainer}>
+                                    <div className={styles.dateContainer__count}>
+                                        <p>Days left</p>
+                                        <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                        <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                    </div>
+                                    <span className={styles.column}></span>
+                                    <div className={styles.dateContainer__count}>
+                                        <p>Hours left</p>
+                                        <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                        <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                    </div>
+                                    <span className={styles.column}></span>
+                                    <div className={styles.dateContainer__count}>
+                                        <p>Minutes left</p>
+                                        <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                        <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                    </div>
+                                    <span className={styles.column}></span>
+                                    <div className={styles.dateContainer__count}>
+                                        <p>Seconds left</p>
+                                        <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                        <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>}
+
+                <div className={styles.recentMusicContainer}>
+                    <div className={styles.recentMusicContainer__topArea}>
+                        <h3>Albums</h3>
                     </div>
-                    <div className={styles.eventInfo}>
-                        <motion.div className={styles.eventInfo__lhs}
-                            initial={{ opacity: 0, scale: 1, y: 80 }}
-                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.2, ease: 'linear' }}>
-                            <div className={styles.eventTitle}>
-                                <span>DETAILS:</span>
-                                <h1>Album launch</h1>
-                            </div>
-                            <div className={styles.eventDateInfo}>
-                                <p>29th July, 2023</p>
-                                <Link href='/events'>
-                                    <button>View more info</button>
-                                </Link>
-                            </div>
-                        </motion.div>
-                        <motion.div className={styles.eventInfo__rhs}
-                            initial={{ opacity: 0, scale: 1, y: -80 }}
-                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                            transition={{ duration: 0.2, ease: 'linear' }}>
-                            <div className={styles.dateContainer}>
-                                <div className={styles.dateContainer__count}>
-                                    <p>Days left</p>
-                                    <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                                    <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                                </div>
-                                <span className={styles.column}></span>
-                                <div className={styles.dateContainer__count}>
-                                    <p>Hours left</p>
-                                    <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                                    <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                                </div>
-                                <span className={styles.column}></span>
-                                <div className={styles.dateContainer__count}>
-                                    <p>Minutes left</p>
-                                    <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                                    <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                                </div>
-                                <span className={styles.column}></span>
-                                <div className={styles.dateContainer__count}>
-                                    <p>Seconds left</p>
-                                    <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                                    <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                                </div>
-                            </div>
-                        </motion.div>
+                    <div className={styles.recentMusicContainer__musics}>
+                        {
+                            albums.map((album, index) => (
+                                <motion.div className={styles.albumCard} key={index}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.2, ease: 'linear' }}>
+                                    <div className={styles.image}>
+                                        <Image src={images.Amen_Album_Cover} alt="Album cover" fill />
+                                    </div>
+                                    <div className={styles.musicInfo}>
+                                        <div className={styles.musicInfo__top}>
+                                            <h2>{album.albumName}</h2>
+                                            {/* <p>{album.shortDescription}</p> */}
+                                        </div>
+                                        <div className={styles.cta}>
+                                            <Link href='http://li.sten.to/amen-andrew-godwin'>
+                                                <button>Listen</button>
+                                            </Link>
+                                            {/* <button onClick={() => setIsPlaying(!isPlaying)}>Listen {!isPlaying ? <PlayIcon /> : <PauseIcon />}</button> */}
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))
+                        }
                     </div>
                 </div>
 

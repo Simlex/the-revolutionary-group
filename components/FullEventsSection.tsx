@@ -58,59 +58,62 @@ const FullEventsSection: FunctionComponent<FullEventsSectionProps> = (): ReactEl
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const isLaunchDate = timeLeft.days + timeLeft.hours + timeLeft.minutes + timeLeft.seconds == 0;
+
 
     return (
 
         <div className={styles.fullEventsSection}>
             <span className={styles.blurredArea}></span>
             <span className={styles.blurredArea}></span>
-            <div className={styles.eventAlertContainer}>
-                <div className={styles.eventAlertContainer__topArea}> 
-                    <h3>Upcoming Event</h3>
-                </div>
-                <div className={styles.eventInfo}>
-                    <div className={styles.eventInfo__lhs}>
-                        <div className={styles.eventTitle}>
-                            <span>DETAILS:</span>
-                            <h1>Album launch</h1>
+            {!isLaunchDate &&
+                <div className={styles.eventAlertContainer}>
+                    <div className={styles.eventAlertContainer__topArea}>
+                        <h3>Upcoming Event</h3>
+                    </div>
+                    <div className={styles.eventInfo}>
+                        <div className={styles.eventInfo__lhs}>
+                            <div className={styles.eventTitle}>
+                                <span>DETAILS:</span>
+                                <h1>Album launch</h1>
+                            </div>
+                            <div className={styles.eventDateInfo}>
+                                <p>29th July, 2023</p>
+                                <button onClick={() => moreInfoSectionRef.current?.scrollIntoView({ behavior: "smooth" })}>View more info</button>
+                            </div>
                         </div>
-                        <div className={styles.eventDateInfo}>
-                            <p>29th July, 2023</p>
-                            <button onClick={() => moreInfoSectionRef.current?.scrollIntoView({ behavior: "smooth" })}>View more info</button>
+                        <div className={styles.eventInfo__rhs}>
+                            <div className={styles.dateContainer}>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Days left</p>
+                                    <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Hours left</p>
+                                    <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Minutes left</p>
+                                    <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
+                                </div>
+                                <span className={styles.column}></span>
+                                <div className={styles.dateContainer__count}>
+                                    <p>Seconds left</p>
+                                    <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                    <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className={styles.eventInfo__rhs}>
-                        <div className={styles.dateContainer}>
-                            <div className={styles.dateContainer__count}>
-                                <p>Days left</p>
-                                <span>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                                <span className={styles.enlargedText}>{`${String(days).length < 2 ? `0${days}` : days}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Hours left</p>
-                                <span>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                                <span className={styles.enlargedText}>{`${String(hours).length < 2 ? `0${hours}` : hours}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Minutes left</p>
-                                <span>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                                <span className={styles.enlargedText}>{`${String(minutes).length < 2 ? `0${minutes}` : minutes}`}</span>
-                            </div>
-                            <span className={styles.column}></span>
-                            <div className={styles.dateContainer__count}>
-                                <p>Seconds left</p>
-                                <span>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                                <span className={styles.enlargedText}>{`${String(seconds).length < 2 ? `0${seconds}` : seconds}`}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </div>}
 
-            <div className={styles.moreInfoSection} ref={moreInfoSectionRef}> 
-                <Image src={images.Album_Launch_Flyer} alt="Event info" fill />   
+            <div className={styles.moreInfoSection} ref={moreInfoSectionRef}>
+                <Image src={images.Album_Launch_Flyer} alt="Event info" fill />
             </div>
         </div>
     );
